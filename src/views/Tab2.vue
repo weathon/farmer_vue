@@ -136,7 +136,8 @@ export default defineComponent({
     async openModal() {
       const modal = await modalController.create({
         component: timepicker,
-        backdropDismiss: false,
+        backdropDismiss: true,
+        swipeToClose: true,
         //@ts-ignore
         componentProps:{date:this.selectedDate.ariaLabel}
       });

@@ -2,7 +2,7 @@
   <ion-content>
     <ion-header>
       <ion-toolbar>
-        <ion-title>{{ date }}</ion-title>
+        <ion-title>{{ date.split(",")[1] }}</ion-title>
         <ion-buttons slot="start">
           <ion-button @click="close()">
             <ion-icon :icon="chevronBackOutline" /> Back</ion-button

@@ -1,12 +1,15 @@
 <template>
 
-    <ion-item-sliding>
-      <!-- <ion-item lines="none"> -->
+    <ion-item-sliding> 
+      <ion-item lines="full">
+        <ion-label>
             <b style="color:black">{{ title }}</b>
             <br />
-            {{ content }}
+            <div  class="ion-text-wrap">{{ content }}</div>
             <br />
-      <!-- </ion-item> -->
+        </ion-label>
+
+      </ion-item>
       <ion-item-options side="end">
         <ion-item-option onClick="archive(item)">Archive</ion-item-option>
       </ion-item-options>

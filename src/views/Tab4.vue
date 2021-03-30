@@ -12,28 +12,7 @@
         </ion-toolbar>
       </ion-header>
       <br />
-      <ion-segment
-        @ionChange="segmentChanged($event)"
-        mode="ios"
-        value="d"
-        style="border-radius: 50px; width: 60%; margin: 0 auto"
-      >
-        <ion-segment-button value="d" style="border-radius: 50px">
-          <ion-label>Delivery Record</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="c" style="border-radius: 50px">
-          <ion-label style="border-radius: 0px">Contract Record</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="e" style="border-radius: 50px">
-          <ion-label style="border-radius: 0px">Contract Record</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="r" style="border-radius: 50px">
-          <ion-label style="border-radius: 0px">Contract Record</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="a" style="border-radius: 50px">
-          <ion-label style="border-radius: 0px">Contract Record</ion-label>
-        </ion-segment-button>
-      </ion-segment>
+
       <ion-item>
         <ion-button
           size="small"
@@ -113,7 +92,7 @@
                         500 bushels
                       </ion-col>
                       <ion-col size="1.5" class="table">
-                        400 bushels
+                        0 bushels
                       </ion-col>
                       <ion-col size="1.5" class="table">
                         $4.85
@@ -121,13 +100,14 @@
                       <ion-col size="1.5" class="table">
                         $2425
                       </ion-col>
-                      <ion-col size="1.5" class="table" style="color:orange">
-                        In Progress
+                      <ion-col size="1.5" class="table" style="color:gray">
+                        Not Started
                       </ion-col>
                     </ion-item>
           </ion-list>
         </div>
        </ion-content>
+       <!-- 交货计划在日历上显示 -->
 
       <!-- </ion-list> -->
     </ion-content>

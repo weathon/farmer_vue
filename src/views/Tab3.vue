@@ -50,6 +50,22 @@
                 a price of +0.35."
         action="alert('You clicked N2')"
       ></myMessage>
+
+      <div v-for="i in [1,2,3,4,5,6,7,8,9]" v-bind:key="i">
+              <myMessage
+        title="Request from Buyer A"
+        content="Buyer A wants 80 tons of green beans before 1/20/2020, offering
+                a price of +0.35."
+        action="alert('You clicked N2')"
+      ></myMessage>
+
+      <myMessage
+        title="Request from Buyer A"
+        content="Buyer A wants 80 tons of green beans before 1/20/2020, offering
+                a price of +0.35."
+        action="alert('You clicked N2')"
+      ></myMessage>
+      </div>
     </ion-content>
   </ion-page>
 </template>
