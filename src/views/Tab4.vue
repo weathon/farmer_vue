@@ -24,6 +24,15 @@
         <ion-segment-button value="c" style="border-radius: 50px">
           <ion-label style="border-radius: 0px">Contract Record</ion-label>
         </ion-segment-button>
+        <ion-segment-button value="e" style="border-radius: 50px">
+          <ion-label style="border-radius: 0px">Contract Record</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="r" style="border-radius: 50px">
+          <ion-label style="border-radius: 0px">Contract Record</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="a" style="border-radius: 50px">
+          <ion-label style="border-radius: 0px">Contract Record</ion-label>
+        </ion-segment-button>
       </ion-segment>
       <ion-item>
         <ion-button
@@ -59,48 +68,47 @@
           >Cargill B</ion-button
         >
       </ion-item>
-      <ion-item>
-        <ion-col size="3" class="table">
-          <b>Crops</b>
-        </ion-col>
-        <ion-col size="3" class="table">
-          <b>Amount</b>
-        </ion-col>
-        <ion-col size="3" class="table">
-          <b>Price</b>
-        </ion-col>
-        <ion-col size="3" class="table">
-          <b>Status</b>
-        </ion-col>
-      </ion-item>
-      <ion-list>
-        <ion-item>
-          <ion-col size="3" class="table"> Corn </ion-col>
-          <ion-col size="3" class="table"> 510 bushel </ion-col>
-          <ion-col size="3" class="table"> $1,625 </ion-col>
-          <ion-col size="3" class="table" style="color: green">
-            Deliveried
-          </ion-col>
-        </ion-item>
 
-        <ion-item>
-          <ion-col size="3" class="table"> Soybean </ion-col>
-          <ion-col size="3" class="table"> 600 bushel </ion-col>
-          <ion-col size="3" class="table"> $8,400 </ion-col>
-          <ion-col size="3" class="table" style="color: green">
-            Deliveried
-          </ion-col>
-        </ion-item>
+       
+          <ion-item>
+            <ion-col size="4" class="table">
+              <b>Contract Date</b>
+            </ion-col>
+            <ion-col size="4" class="table">
+              <b>Buyer</b>
+            </ion-col>
+            <ion-col size="4" class="table">
+              <b>Contract Amount</b>
+            </ion-col>
+          </ion-item>
 
-        <ion-item>
-          <ion-col size="3" class="table"> Corn </ion-col>
-          <ion-col size="3" class="table"> 500 bushel </ion-col>
-          <ion-col size="3" class="table"> $1,200 </ion-col>
-          <ion-col size="3" class="table" style="color: orange">
-            In Process
-          </ion-col>
-        </ion-item>
-      </ion-list>
+          <ion-list>
+            <ion-item>
+              <ion-col size="3" class="table"> Corn </ion-col>
+              <ion-col size="3" class="table"> 510 bushel </ion-col>
+              <ion-col size="3" class="table"> $1,625 </ion-col>
+              <ion-col size="3" class="table" style="color: green">
+                Deliveried
+              </ion-col>
+            </ion-item>
+          </ion-list>
+
+          <ion-item>
+            <ion-col size="3" class="table">
+              <b>Deliveried Amount</b>
+            </ion-col>
+            <ion-col size="3" class="table">
+              <b>Unit Price</b>
+            </ion-col>
+            <ion-col size="3" class="table">
+              <b>Total Price</b>
+            </ion-col>
+            <ion-col size="3" class="table">
+              <b>Status</b>
+            </ion-col>
+          </ion-item>
+
+      <!-- </ion-list> -->
     </ion-content>
   </ion-page>
 </template>
