@@ -1,0 +1,7 @@
+{
+  "name": "cache",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
