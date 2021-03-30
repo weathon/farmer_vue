@@ -6,7 +6,7 @@
     <br />
 
     <div>
-      <ion-card style="position: absolute; top: 20%; width: 85%">
+      <ion-card style="position: absolute; top: 5%; width: 85%">
         <ion-item>
           <br />
           <ion-card-title>Welcome,</ion-card-title>
@@ -17,35 +17,52 @@
           >
           <ion-input id="username"></ion-input>
         </ion-item>
+
+        <ion-item>
+          <ion-label position="floating" style="color: lightgray"
+            >Farm Name</ion-label
+          >
+          <ion-input id="username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating" style="color: lightgray"
+            >Farmer Name</ion-label
+          >
+          <ion-input id="username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating" style="color: lightgray"
+            >Phone</ion-label
+          >
+          <ion-input id="username"></ion-input>
+        </ion-item>
+
         <ion-item>
           <ion-label position="floating" style="color: lightgray"
             >Password</ion-label
           >
           <ion-input type="password" id="psw"></ion-input>
         </ion-item>
-        <ion-item lines="none">
-          <a slot="end"><b>Reset Password</b></a>
+        <ion-item>
+          <ion-label position="floating" style="color: lightgray"
+            >Re-enter Password</ion-label
+          >
+          <ion-input type="password" id="psw"></ion-input>
         </ion-item>
         <br />
-        <ion-row>
-          <ion-col size="6">
-            <ion-button expand="block" style="background-color: " @click="openreg()"
-              >Register</ion-button
-            >
-          </ion-col>
-          <ion-col size="6">
-            <ion-button expand="block" v-on:click="login()">Sign In</ion-button>
-          </ion-col>
-        </ion-row>
+
+          <ion-button expand="block" v-on:click="register()"
+            >Confirm</ion-button
+          >
+
       </ion-card>
     </div>
   </ion-content>
 </template>
 
 <script lang="ts">
-import reg from "@/views/register.vue"
-
-
 import {
   IonCard,
   IonInput,
@@ -60,10 +77,10 @@ import {
   alertController,
 } from "@ionic/vue";
 
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "myLogin",
+  name: "reg",
   data() {
     return {
       content: "Content",
@@ -84,32 +101,8 @@ export default defineComponent({
     //   setTimeout(modalController.dismiss,1000)
   },
   methods: {
-    async presentAlert() {
-      const alert = await alertController.create({
-        header: "Password Error",
-        message: 'Please retry or click "Reset Password"',
-        buttons: ["OK"],
-      });
-      return alert.present();
-    },
-    async openreg() {
-      const modal = await modalController.create({
-        "component": reg,
-        backdropDismiss: false,
-      });
-      return modal.present();
-    },
-    login() {
-      // @ts-ignore
-      let success =
-      // @ts-ignore
-        document.getElementById("username").value == "test" &&
-      // @ts-ignore
-        document.getElementById("psw").value == "123456";
-      console.log(success);
-      success=true;
-      if (success) modalController.dismiss();
-      else this.presentAlert();
+    register() {
+      modalController.dismiss();
     },
   },
 });
