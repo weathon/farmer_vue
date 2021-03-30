@@ -26,8 +26,21 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'tab3',
         component: () => import('@/views/Tab3.vue')
-      }
+      },
+      {
+        path: 'tab4',
+        component: () => import('@/views/Tab4.vue')
+      },
+      {
+        path: 'confrim',
+        component: () => import('@/components/confrim.vue')
+      },
     ]
+
+  },
+  {
+    path: '/picktime',
+    component: () => import('@/components/timepicker.vue')
   }
 ]
 
