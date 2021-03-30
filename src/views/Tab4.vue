@@ -41,7 +41,7 @@
           id="tab4Button0"
           v-on:click="switchGrain(0)"
           enable="true"
-          >MFA 1</ion-button
+          >Corn</ion-button
         >&nbsp;
         <ion-button
           size="small"
@@ -49,7 +49,7 @@
           id="tab4Button1"
           v-on:click="switchGrain(1)"
           enable="false"
-          >MFA 2</ion-button
+          >Rice</ion-button
         >&nbsp;
         <ion-button
           size="small"
@@ -57,7 +57,7 @@
           id="tab4Button2"
           v-on:click="switchGrain(2)"
           enable="false"
-          >Cargill A</ion-button
+          >Soybean</ion-button
         >&nbsp;
         <ion-button
           size="small"
@@ -65,48 +65,69 @@
           id="tab4Button3"
           v-on:click="switchGrain(3)"
           enable="false"
-          >Cargill B</ion-button
+          >Wheat</ion-button
         >
       </ion-item>
 
-       
+      <ion-content scroll-x="true">
+        <div style="width:250%">
           <ion-item>
-            <ion-col size="4" class="table">
+            <ion-col size="1.5" class="table">
               <b>Contract Date</b>
             </ion-col>
-            <ion-col size="4" class="table">
+              <ion-col size="1.5" class="table">
+              <b>Deliverie Month</b>
+            </ion-col>
+            <ion-col size="1.5" class="table">
               <b>Buyer</b>
             </ion-col>
-            <ion-col size="4" class="table">
+            <ion-col size="1.5" class="table">
               <b>Contract Amount</b>
+            </ion-col>
+            <ion-col size="1.5" class="table">
+              <b>Deliveried Amount</b>
+            </ion-col>
+            <ion-col size="1.5" class="table">
+              <b>Unit Price</b>
+            </ion-col>
+            <ion-col size="1.5" class="table">
+              <b>Total Price</b>
+            </ion-col>
+            <ion-col size="1.5" class="table">
+              <b>Status</b>
             </ion-col>
           </ion-item>
 
           <ion-list>
-            <ion-item>
-              <ion-col size="3" class="table"> Corn </ion-col>
-              <ion-col size="3" class="table"> 510 bushel </ion-col>
-              <ion-col size="3" class="table"> $1,625 </ion-col>
-              <ion-col size="3" class="table" style="color: green">
-                Deliveried
-              </ion-col>
-            </ion-item>
+                       <ion-item>
+                      <ion-col size="1.5" class="table">
+                        01/22/2021
+                      </ion-col>
+                        <ion-col size="1.5" class="table">
+                        Jun 2021
+                      </ion-col>
+                      <ion-col size="1.5" class="table">
+                        MFA
+                      </ion-col>
+                      <ion-col size="1.5" class="table">
+                        500 bushels
+                      </ion-col>
+                      <ion-col size="1.5" class="table">
+                        400 bushels
+                      </ion-col>
+                      <ion-col size="1.5" class="table">
+                        $4.85
+                      </ion-col>
+                      <ion-col size="1.5" class="table">
+                        $2425
+                      </ion-col>
+                      <ion-col size="1.5" class="table" style="color:orange">
+                        In Progress
+                      </ion-col>
+                    </ion-item>
           </ion-list>
-
-          <ion-item>
-            <ion-col size="3" class="table">
-              <b>Deliveried Amount</b>
-            </ion-col>
-            <ion-col size="3" class="table">
-              <b>Unit Price</b>
-            </ion-col>
-            <ion-col size="3" class="table">
-              <b>Total Price</b>
-            </ion-col>
-            <ion-col size="3" class="table">
-              <b>Status</b>
-            </ion-col>
-          </ion-item>
+        </div>
+       </ion-content>
 
       <!-- </ion-list> -->
     </ion-content>
