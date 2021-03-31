@@ -18,34 +18,25 @@
         </ion-toolbar>
       </ion-header>
       <ion-item>
-        <ion-button
-          class="roundbutton"
-          id="button0"
-          v-on:click="switchGrain(0)"
-          enable="true"
-          >Corn</ion-button
-        >&nbsp;
-        <ion-button
-          class="roundbutton"
-          id="button1"
-          v-on:click="switchGrain(1)"
-          enable="false"
-          >Rice</ion-button
-        >&nbsp;
-        <ion-button
-          class="roundbutton"
-          id="button2"
-          v-on:click="switchGrain(2)"
-          enable="false"
-          >Wheat</ion-button
-        >&nbsp;
-        <ion-button
-          class="roundbutton"
-          id="button3"
-          v-on:click="switchGrain(3)"
-          enable="false"
-          >Soybean</ion-button
+        <ion-segment
+          scrollable
+          @ionChange="segmentChanged($event)"
+          mode="md"
+          style="width: 100%"
+          value="Soybean"
         >
+          <ion-segment-button
+            v-for="item in [
+              'Soybean',
+              'Corn',
+              'Rice',
+            ]"
+            v-bind:key="item"
+            v-bind:value="item"
+          >
+            <ion-label style="text-transform: capitalize">{{ item }}</ion-label>
+          </ion-segment-button>
+        </ion-segment>
       </ion-item>
       <!-- <ion-grid> -->
       <!-- Cargrill *2 MFA Gfg Agriculture -->
@@ -151,11 +142,11 @@
 <script lang="ts">
 import { IonSlides, IonSlide } from "@ionic/vue";
 import { defineComponent } from "vue";
-import Notifications from "@/views/Tab3.vue"
+import Notifications from "@/views/Tab3.vue";
 import buyer from "@/components/buyer.vue";
 import Price from "@/components/Price.vue";
 import myLogin from "@/views/Login.vue";
-import {notificationsOutline} from "ionicons/icons"
+import { notificationsOutline } from "ionicons/icons";
 import {
   IonPage,
   IonHeader,
@@ -231,10 +222,9 @@ export default {
     //@ts-ignore
     // setTimeout(modalController.dismiss,15000);
   },
-  data()
-  {
-    return {notificationsOutline};
-  }
+  data() {
+    return { notificationsOutline };
+  },
 };
 
 // 后端排序

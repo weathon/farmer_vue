@@ -12,38 +12,26 @@
         </ion-toolbar> 
       </ion-header>
       <ion-item>
-        <ion-button
-          size="small"
-          class="roundbutton"
-          id="tab2Button0"
-          v-on:click="switchGrain(0)"
-          enable="true"
-          >MFA 1</ion-button
-        >&nbsp;
-        <ion-button
-          size="small"
-          class="roundbutton"
-          id="tab2Button1"
-          v-on:click="switchGrain(1)"
-          enable="false"
-          >MFA 2</ion-button
-        >&nbsp;
-        <ion-button
-          size="small"
-          class="roundbutton"
-          id="tab2Button2"
-          v-on:click="switchGrain(2)"
-          enable="false"
-          >Cargill A</ion-button
-        >&nbsp;
-        <ion-button
-          size="small"
-          class="roundbutton"
-          id="tab2Button3"
-          v-on:click="switchGrain(3)"
-          enable="false"
-          >Cargill B</ion-button
+                <ion-segment
+          scrollable
+          @ionChange="segmentChanged($event)"
+          mode="md"
+          style="width: 100%"
+          value="Soybean"
         >
+          <ion-segment-button
+            v-for="item in [
+              'MFA 1',
+              'MFA 2',
+              'Cargill 1',
+              'Cargill 2',
+            ]"
+            v-bind:key="item"
+            v-bind:value="item"
+          >
+            <ion-label style="text-transform: capitalize">{{ item }}</ion-label>
+          </ion-segment-button>
+        </ion-segment>
       </ion-item>
       <br />
       <div style="width: 100%; text-align: center">

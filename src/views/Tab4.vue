@@ -11,43 +11,29 @@
           <ion-title size="large">Records</ion-title>
         </ion-toolbar>
       </ion-header>
-      <br />
 
       <ion-item>
-        <ion-button
-          size="small"
-          class="roundbutton"
-          id="tab4Button0"
-          v-on:click="switchGrain(0)"
-          enable="true"
-          >Corn</ion-button
-        >&nbsp;
-        <ion-button
-          size="small"
-          class="roundbutton"
-          id="tab4Button1"
-          v-on:click="switchGrain(1)"
-          enable="false"
-          >Rice</ion-button
-        >&nbsp;
-        <ion-button
-          size="small"
-          class="roundbutton"
-          id="tab4Button2"
-          v-on:click="switchGrain(2)"
-          enable="false"
-          >Soybean</ion-button
-        >&nbsp;
-        <ion-button
-          size="small"
-          class="roundbutton"
-          id="tab4Button3"
-          v-on:click="switchGrain(3)"
-          enable="false"
-          >Wheat</ion-button
+               <ion-segment
+          scrollable
+          @ionChange="segmentChanged($event)"
+          mode="md"
+          style="width: 100%"
+          value="Soybean"
         >
+          <ion-segment-button
+            v-for="item in [
+              'Soybean',
+              'Corn',
+              'Rice',
+            ]"
+            v-bind:key="item"
+            v-bind:value="item"
+          >
+            <ion-label style="text-transform: capitalize">{{ item }}</ion-label>
+          </ion-segment-button>
+        </ion-segment>
       </ion-item>
-
+<br/>
       <ion-content scroll-x="true">
         <div style="width:250%">
           <ion-item>
