@@ -32,6 +32,10 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Tab4.vue')
       },
       {
+        path: 'tab5',
+        component: () => import('@/views/Tab5.vue')
+      },
+      {
         path: 'confrim',
         component: () => import('@/components/confrim.vue')
       },

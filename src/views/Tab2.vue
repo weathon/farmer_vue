@@ -9,7 +9,7 @@
       <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Schedule</ion-title>
-        </ion-toolbar>
+        </ion-toolbar> 
       </ion-header>
       <ion-item>
         <ion-button

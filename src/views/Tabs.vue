@@ -14,16 +14,21 @@
           <ion-label>Schedule</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="tab3" href="/tabs/tab3">
+        <!-- <ion-tab-button tab="tab3" href="/tabs/tab3">
           <ion-icon :icon="notificationsOutline" />
 
           <ion-label>Notifications</ion-label>
-        </ion-tab-button>
+        </ion-tab-button> -->
 
         <ion-tab-button tab="tab4" href="/tabs/tab4">
           <ion-icon :icon="fileTrayFullOutline" />
 
           <ion-label>Records</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="tab5" href="/tabs/tab5">
+          <ion-icon :icon="settingsOutline" />
+          <ion-label>Settings</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
@@ -44,6 +49,7 @@ import {
   todayOutline,
   notificationsOutline,
   fileTrayFullOutline,
+  settingsOutline
 } from "ionicons/icons";
 
 export default {
@@ -55,6 +61,7 @@ export default {
       todayOutline,
       notificationsOutline,
       fileTrayFullOutline,
+      settingsOutline
     };
   },
 };

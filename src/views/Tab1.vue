@@ -4,10 +4,14 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>Prices</ion-title>
+        <ion-buttons slot="end" @click="openNotif()">
+          <ion-menu-button auto-hide="false">
+            <ion-icon :icon="notificationsOutline" />
+          </ion-menu-button>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <!-- :fullscreen="true" -->
       <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Prices</ion-title>
@@ -147,10 +151,11 @@
 <script lang="ts">
 import { IonSlides, IonSlide } from "@ionic/vue";
 import { defineComponent } from "vue";
+import Notifications from "@/views/Tab3.vue"
 import buyer from "@/components/buyer.vue";
 import Price from "@/components/Price.vue";
 import myLogin from "@/views/Login.vue";
-
+import {notificationsOutline} from "ionicons/icons"
 import {
   IonPage,
   IonHeader,
@@ -186,7 +191,14 @@ export default {
   methods: {
     async openModal() {
       const modal = await modalController.create({
-        "component": myLogin,
+        component: myLogin,
+        backdropDismiss: false,
+      });
+      return modal.present();
+    },
+    async openNotif() {
+      const modal = await modalController.create({
+        component: Notifications,
         backdropDismiss: false,
       });
       return modal.present();
@@ -206,14 +218,23 @@ export default {
       console.log(buttonId);
     },
   },
-  created: function () {
+  async created() {
     let alreadylogin = false;
-    const foo = this.openModal;
-    if (alreadylogin == false) foo();
+    if (alreadylogin == false) {
+      const modal = await modalController.create({
+        component: myLogin,
+        backdropDismiss: false,
+      });
+      modal.present();
+    }
     alreadylogin = true;
     //@ts-ignore
     // setTimeout(modalController.dismiss,15000);
   },
+  data()
+  {
+    return {notificationsOutline};
+  }
 };
 
 // 后端排序

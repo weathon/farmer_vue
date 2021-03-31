@@ -153,11 +153,6 @@ export default {
 ion-segment-button {
   --border-radius: 50px;
 }
-ion-segment {
-  border-radius: 50px;
-  width: 60%;
-  margin: 0 auto;
-}
 
 .scroll {
   overflow: scroll;

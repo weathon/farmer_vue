@@ -32,6 +32,7 @@
           value="d"
           style="border-radius: 50px; width: 60%; margin: 0 auto"
           expand="block"
+          round=true
         >
           <ion-segment-button value="e" style="border-radius: 50px">
             <ion-label>Early {{ Month }}</ion-label>
@@ -125,7 +126,7 @@ export default defineComponent({
 ion-segment-button {
   --border-radius: 50px;
 }
-ion-segment {
+[round=true] {
   border-radius: 50px;
   width: 60%;
   margin: 0 auto;

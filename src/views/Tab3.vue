@@ -8,10 +8,17 @@
             <ion-icon :icon="archiveOutline" />
           </ion-menu-button>
         </ion-buttons>
+                <ion-buttons slot="start">
+          <ion-button @click="close()">
+            <ion-icon :icon="chevronBackOutline" /> Back</ion-button
+          >
+          <!-- <ion-back-button></ion-back-button> -->
+        </ion-buttons>
       </ion-toolbar>
+      <!-- </ion-toolbar> -->
     </ion-header>
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
+      <!-- <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large"
             >Notifications
@@ -20,8 +27,8 @@
                 <ion-icon :icon="archiveOutline" />
               </ion-menu-button> </ion-buttons
           ></ion-title>
-        </ion-toolbar>
-      </ion-header>
+        </ion-toolbar> -->
+      <!-- </ion-header> -->
 
       <myMessage
         title="Request from Buyer A"
@@ -71,6 +78,8 @@
 </template>
 
 <script lang="ts">
+import { chevronBackOutline } from "ionicons/icons";
+
 import {
   IonPage,
   IonHeader,
@@ -80,10 +89,13 @@ import {
   IonIcon,
   IonMenuButton,
   IonButtons,
+  modalController
 } from "@ionic/vue";
 import { archiveOutline } from "ionicons/icons";
 import myMessage from "@/components/Message.vue";
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "Notifications",
   components: {
     IonHeader,
@@ -97,7 +109,12 @@ export default {
     myMessage,
   },
   setup() {
-    return { archiveOutline };
+    return { archiveOutline,chevronBackOutline };
   },
-};
+  methods: {
+    close() {
+      modalController.dismiss();
+    },
+  },
+});
 </script>
