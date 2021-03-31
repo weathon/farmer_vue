@@ -33,6 +33,7 @@
           <ion-label style="text-transform: capitalize">{{ item }}</ion-label>
         </ion-segment-button>
       </ion-segment>
+      <profile></profile>
     </ion-content>
   </ion-page>
 </template>
@@ -47,10 +48,10 @@ import {
 } from "@ionic/vue";
 // import ExploreContainer from '@/components/ExploreContainer.vue';
 import History from "@/components/History.vue";
-
+import profile from "@/Settings/Profile.vue"
 export default {
   name: "Tab4",
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, History },
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, History, profile },
   methods: {
     switchGrain(id) {
       //@ts-ignore

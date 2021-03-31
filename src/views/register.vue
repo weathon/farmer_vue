@@ -11,7 +11,7 @@
           <br />
           <ion-card-title>Welcome,</ion-card-title>
           <!-- <br/> -->
-          <div style="color: gray">Sign in to continue</div>
+          <div style="color: gray">Regrester to continue</div>
           <ion-label position="floating" style="color: lightgray"
             >User Name</ion-label
           >

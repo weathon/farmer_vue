@@ -1,8 +1,7 @@
 <template>
-  <ion-content>
     <ion-header>
       <ion-toolbar>
-        <ion-title>{{ date.split(",")[1] }}</ion-title>
+        <ion-title><b>{{ date.split(",")[1] }}</b></ion-title>
         <ion-buttons slot="start">
           <ion-button @click="close()">
             <ion-icon :icon="chevronBackOutline" /> Back</ion-button
@@ -11,15 +10,33 @@
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
+  <ion-content>
 
+      <ion-header collapse="condense">
+        <ion-toolbar>
+          <ion-title size="large">{{ date.split(",")[1] }}</ion-title>
+        </ion-toolbar>
+      </ion-header>
     <ion-list
       v-for="time in [
-        '5:30 - 6:00',
-        '6:00 - 6:30',
-        '6:30 - 7:00',
-        '7:00 - 7:30',
-        '7:30 - 8:00',
-        '8:30 - 9:00',
+        '5:30 - 5:50',
+        '5:50 - 6:10',
+        '6:10 - 6:50',
+        '6:50 - 7:10',
+        '7:10 - 7:50',
+        '7:50 - 6:10',
+        '8:10 - 6:50',
+        '8:50 - 6:10',
+        '8:50 - 6:10',
+        '8:50 - 6:10',
+        '8:50 - 6:10',
+        '8:50 - 6:10',
+        '8:50 - 6:10',
+        '8:50 - 6:10',
+        '8:50 - 6:10',
+        '8:50 - 6:10',
+        '8:50 - 6:10',
+        '8:50 - 6:10',
       ]"
       v-bind:key="time"
     >
@@ -27,12 +44,25 @@
         <ion-col size="6" class="table">
           <b>{{ time }}</b>
         </ion-col>
-        <ion-col size="6" class="table"> 2/5 </ion-col>
+        <ion-col size="6" class="table" style="color: green"> Open </ion-col>
       </ion-item>
     </ion-list>
+    <ion-item>
+      <ion-col size="6" class="table">
+        <b>9:10 - 9:30</b>
+      </ion-col>
+      <ion-col size="6" class="table" style="color: red"> Closed </ion-col>
+    </ion-item>
+
+    <ion-item>
+      <ion-col size="6" class="table">
+        <b>9:30 - 9:50</b>
+      </ion-col>
+      <ion-col size="6" class="table" style="color: orange"> Schedueled </ion-col>
+    </ion-item>
   </ion-content>
 </template>
-
+ 
 <script lang="ts">
 import {
   modalController,
@@ -64,8 +94,6 @@ export default defineComponent({
     close() {
       modalController.dismiss();
     },
-
-
   },
 });
 </script>
