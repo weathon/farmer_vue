@@ -13,7 +13,7 @@
       </ion-header>
 
       <ion-item>
-               <ion-segment
+        <ion-segment
           scrollable
           @ionChange="segmentChanged($event)"
           mode="md"
@@ -21,11 +21,7 @@
           value="Soybean"
         >
           <ion-segment-button
-            v-for="item in [
-              'Soybean',
-              'Corn',
-              'Rice',
-            ]"
+            v-for="item in ['Soybean', 'Corn', 'Rice']"
             v-bind:key="item"
             v-bind:value="item"
           >
@@ -33,14 +29,14 @@
           </ion-segment-button>
         </ion-segment>
       </ion-item>
-<br/>
+      <br />
       <ion-content scroll-x="true">
-        <div style="width:250%">
+        <div style="width: 250%">
           <ion-item>
             <ion-col size="1.5" class="table">
               <b>Contract Date</b>
             </ion-col>
-              <ion-col size="1.5" class="table">
+            <ion-col size="1.5" class="table">
               <b>Deliverie Month</b>
             </ion-col>
             <ion-col size="1.5" class="table">
@@ -63,37 +59,41 @@
             </ion-col>
           </ion-item>
 
-          <ion-list>
-                       <ion-item>
-                      <ion-col size="1.5" class="table">
-                        01/22/2021
-                      </ion-col>
-                        <ion-col size="1.5" class="table">
-                        Jun 2021
-                      </ion-col>
-                      <ion-col size="1.5" class="table">
-                        MFA
-                      </ion-col>
-                      <ion-col size="1.5" class="table">
-                        500 bushels
-                      </ion-col>
-                      <ion-col size="1.5" class="table">
-                        0 bushels
-                      </ion-col>
-                      <ion-col size="1.5" class="table">
-                        $4.85
-                      </ion-col>
-                      <ion-col size="1.5" class="table">
-                        $2425
-                      </ion-col>
-                      <ion-col size="1.5" class="table" style="color:gray">
-                        Not Started
-                      </ion-col>
-                    </ion-item>
+          <ion-list v-for="row in rows" v-bind:key="row">
+            <ion-item>
+              <ion-col size="1.5" class="table">
+                {{ row.date }}
+              </ion-col>
+              <ion-col size="1.5" class="table">
+                {{ row.month }}
+              </ion-col>
+              <ion-col size="1.5" class="table">
+                {{ row.buyer }}
+              </ion-col>
+              <ion-col size="1.5" class="table">
+                {{ row.amount }}
+              </ion-col>
+              <ion-col size="1.5" class="table">
+                {{ row.deliveried }}
+              </ion-col>
+              <ion-col size="1.5" class="table">
+                {{ row.unitprice }}
+              </ion-col>
+              <ion-col size="1.5" class="table">
+                {{ row.totalvalue }}
+              </ion-col>
+              <ion-col
+                size="1.5"
+                class="table"
+                v-bind:style="{ color: row.statuscolor }"
+              >
+                {{ row.status }}
+              </ion-col>
+            </ion-item>
           </ion-list>
         </div>
-       </ion-content>
-       <!-- 交货计划在日历上显示 -->
+      </ion-content>
+      <!-- 交货计划在日历上显示 -->
 
       <!-- </ion-list> -->
     </ion-content>
@@ -131,6 +131,45 @@ export default {
       // document.getElementById(buttonId).className += " enabled";
       console.log(buttonId);
     },
+  },
+  data() {
+    return {
+      rows: [
+        {
+          date: "1/22/2021",
+          month: "Jun 2021",
+          buyer: "MFA 1",
+          amount: "500 bushels",
+          deliveried: "0 bushels",
+          unitprice: "$4.85",
+          totalvalue: "$2425",
+          status: "Not Started",
+          statuscolor: "gray",
+        },
+        {
+          date: "2/22/2021",
+          month: "Mar 2021",
+          buyer: "MFA 2",
+          amount: "500 bushels",
+          deliveried: "500 bushels",
+          unitprice: "$4.85",
+          totalvalue: "$2425",
+          status: "Finished",
+          statuscolor: "green",
+        },
+        {
+          date: "1/22/2021",
+          month: "Apr 2021",
+          buyer: "Cargill 1",
+          amount: "500 bushels",
+          deliveried: "100 bushels",
+          unitprice: "$4.85",
+          totalvalue: "$2425",
+          status: "In Progress",
+          statuscolor: "orange",
+        },
+      ],
+    };
   },
 };
 </script>
