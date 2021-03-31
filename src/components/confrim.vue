@@ -23,7 +23,7 @@
         >
       </ion-item>
 
-      <ion-item lines="full">
+      <!-- <ion-item lines="full">
         <ion-label>Time</ion-label>
 
         <ion-segment
@@ -41,7 +41,7 @@
             <ion-label style="border-radius: 0px">Late {{ Month }}</ion-label>
           </ion-segment-button>
         </ion-segment>
-      </ion-item>
+      </ion-item> -->
 
       <ion-item lines="full">
         <ion-label>Price per bushel</ion-label>
