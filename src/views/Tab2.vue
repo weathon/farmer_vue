@@ -17,7 +17,7 @@
           @ionChange="segmentChanged($event)"
           mode="md"
           style="width: 100%"
-          value="Soybean"
+          value="MFA 1"
         >
           <ion-segment-button
             v-for="item in [

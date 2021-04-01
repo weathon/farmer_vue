@@ -34,25 +34,25 @@
         <div style="width: 250%">
           <ion-item>
             <ion-col size="1.5" class="table">
-              <b>Contract<br/>Date</b>
+              <b>Contract<br />Date</b>
             </ion-col>
             <ion-col size="1.5" class="table">
-              <b>Deliverie<br/>Month</b>
+              <b>Deliverie<br />Month</b>
             </ion-col>
             <ion-col size="1.5" class="table">
               <b>Buyer</b>
             </ion-col>
             <ion-col size="1.5" class="table">
-              <b>Contract<br/>Amount</b>
+              <b>Contract<br />Amount</b>
             </ion-col>
             <ion-col size="1.5" class="table">
-              <b>Deliveried<br/>Amount</b>
+              <b>Deliveried<br />Amount</b>
             </ion-col>
             <ion-col size="1.5" class="table">
-              <b>Unit<br/>Price</b>
+              <b>Unit<br />Price</b>
             </ion-col>
             <ion-col size="1.5" class="table">
-              <b>Total<br/>Value</b>
+              <b>Total<br />Value</b>
             </ion-col>
             <ion-col size="1.5" class="table">
               <b>Status</b>
@@ -107,14 +107,139 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  IonButton,
+  IonSegment,
+  IonSegmentButton,
 } from "@ionic/vue";
 // import ExploreContainer from '@/components/ExploreContainer.vue';
 import History from "@/components/History.vue";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "Tab4",
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, History },
+  components: {
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonPage,
+    History,
+    IonButton,
+    IonSegment,
+    IonSegmentButton,
+  },
   methods: {
+    segmentChanged(ev) {
+      if (ev.detail.value == "Soybean") {
+        this.rows = [
+          {
+            date: "1/22/2021",
+            month: "Jun 2021",
+            buyer: "MFA 1",
+            amount: "500 bushels",
+            deliveried: "0 bushels",
+            unitprice: "$4.85",
+            totalvalue: "$2425",
+            status: "Not Started",
+            statuscolor: "gray",
+          },
+          {
+            date: "2/22/2021",
+            month: "Mar 2021",
+            buyer: "MFA 2",
+            amount: "500 bushels",
+            deliveried: "500 bushels",
+            unitprice: "$4.85",
+            totalvalue: "$2425",
+            status: "Finished",
+            statuscolor: "green",
+          },
+          {
+            date: "1/22/2021",
+            month: "Apr 2021",
+            buyer: "Cargill 1",
+            amount: "500 bushels",
+            deliveried: "100 bushels",
+            unitprice: "$4.85",
+            totalvalue: "$2425",
+            status: "In Progress",
+            statuscolor: "orange",
+          },
+        ];
+      } else if (ev.detail.value == "Corn") {
+        this.rows = [
+          {
+            date: "1/15/2021",
+            month: "Aug 2021",
+            buyer: "MFA 1",
+            amount: "500 bushels",
+            deliveried: "0 bushels",
+            unitprice: "$5.85",
+            totalvalue: "$2425",
+            status: "Not Started",
+            statuscolor: "gray",
+          },
+          {
+            date: "2/23/2021",
+            month: "Mar 2021",
+            buyer: "MFA 1",
+            amount: "300 bushels",
+            deliveried: "500 bushels",
+            unitprice: "$4.85",
+            totalvalue: "$2425",
+            status: "Finished",
+            statuscolor: "green",
+          },
+          {
+            date: "1/22/2021",
+            month: "Apr 2021",
+            buyer: "Cargill 1",
+            amount: "500 bushels",
+            deliveried: "100 bushels",
+            unitprice: "$4.85",
+            totalvalue: "$2425",
+            status: "In Progress",
+            statuscolor: "orange",
+          },
+        ];
+      } else if (ev.detail.value == "Rice") {
+        this.rows = [
+          {
+            date: "1/18/2021",
+            month: "Aug 2021",
+            buyer: "MFA 1",
+            amount: "600 bushels",
+            deliveried: "0 bushels",
+            unitprice: "$5.85",
+            totalvalue: "$2425",
+            status: "Not Started",
+            statuscolor: "gray",
+          },
+          {
+            date: "2/23/2021",
+            month: "Mar 2021",
+            buyer: "MFA 1",
+            amount: "300 bushels",
+            deliveried: "500 bushels",
+            unitprice: "$4.85",
+            totalvalue: "$2425",
+            status: "Finished",
+            statuscolor: "green",
+          },
+          {
+            date: "1/22/2021",
+            month: "Apr 2021",
+            buyer: "Cargill 1",
+            amount: "500 bushels",
+            deliveried: "100 bushels",
+            unitprice: "$4.85",
+            totalvalue: "$2425",
+            status: "In Progress",
+            statuscolor: "orange",
+          },
+        ];
+      }
+    },
     switchGrain(id) {
       //@ts-ignore
 
@@ -171,7 +296,7 @@ export default {
       ],
     };
   },
-};
+});
 </script>
 
 <style>
