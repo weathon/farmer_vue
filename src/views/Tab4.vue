@@ -34,25 +34,25 @@
         <div style="width: 250%">
           <ion-item>
             <ion-col size="1.5" class="table">
-              <b>Contract Date</b>
+              <b>Contract<br/>Date</b>
             </ion-col>
             <ion-col size="1.5" class="table">
-              <b>Deliverie Month</b>
+              <b>Deliverie<br/>Month</b>
             </ion-col>
             <ion-col size="1.5" class="table">
               <b>Buyer</b>
             </ion-col>
             <ion-col size="1.5" class="table">
-              <b>Contract Amount</b>
+              <b>Contract<br/>Amount</b>
             </ion-col>
             <ion-col size="1.5" class="table">
-              <b>Deliveried Amount</b>
+              <b>Deliveried<br/>Amount</b>
             </ion-col>
             <ion-col size="1.5" class="table">
-              <b>Unit Price</b>
+              <b>Unit<br/>Price</b>
             </ion-col>
             <ion-col size="1.5" class="table">
-              <b>Total Price</b>
+              <b>Total<br/>Value</b>
             </ion-col>
             <ion-col size="1.5" class="table">
               <b>Status</b>

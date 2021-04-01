@@ -44,14 +44,14 @@
       </ion-item> -->
 
       <ion-item lines="full">
-        <ion-label>Price per bushel</ion-label>
+        <ion-label>Price per bsh.</ion-label>
         <ion-note slot="end"
           ><b>{{ Aprice }}</b></ion-note
         >
       </ion-item>
 
       <ion-item lines="full">
-        <ion-label>Amount (bushel)</ion-label>
+        <ion-label>Amount(bsh.)</ion-label>
         <!-- <ion-label style="color: darkgray" ></ion-label> -->
         <ion-input
           id="username"

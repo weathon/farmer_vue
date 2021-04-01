@@ -18,17 +18,23 @@
       <!-- </ion-toolbar> -->
     </ion-header>
     <ion-content :fullscreen="true">
-      <!-- <ion-header collapse="condense">
+      <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large"
             >Notifications
             <ion-buttons slot="end">
               <ion-menu-button auto-hide="false">
                 <ion-icon :icon="archiveOutline" />
-              </ion-menu-button> </ion-buttons
-          ></ion-title>
-        </ion-toolbar> -->
-      <!-- </ion-header> -->
+              </ion-menu-button>
+            </ion-buttons>
+            <ion-buttons slot="start">
+              <ion-button @click="close()">
+                <ion-icon :icon="chevronBackOutline" /> Back</ion-button
+              ></ion-buttons
+            ></ion-title
+          >
+        </ion-toolbar>
+      </ion-header>
 
       <!-- title="Request from Buyer A"
         content="Buyer A wants 80 tons of green beans before 1/20/2020, offering
