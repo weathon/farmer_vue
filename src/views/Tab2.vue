@@ -9,10 +9,10 @@
       <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Schedule</ion-title>
-        </ion-toolbar> 
+        </ion-toolbar>
       </ion-header>
       <ion-item>
-                <ion-segment
+        <ion-segment
           scrollable
           @ionChange="segmentChanged($event)"
           mode="md"
@@ -20,12 +20,7 @@
           value="MFA 1"
         >
           <ion-segment-button
-            v-for="item in [
-              'MFA 1',
-              'MFA 2',
-              'Cargill 1',
-              'Cargill 2',
-            ]"
+            v-for="item in ['MFA 1', 'MFA 2', 'Cargill 1', 'Cargill 2']"
             v-bind:key="item"
             v-bind:value="item"
           >
@@ -56,6 +51,8 @@ import {
   IonTitle,
   IonContent,
   modalController,
+  IonSegmentButton,
+  IonSegment,
 } from "@ionic/vue";
 // import { Calendar } from 'v-calendar';
 // import { CalendarModule } from "ion2-calendar";
@@ -63,7 +60,7 @@ import {
 import { Calendar } from "v-calendar";
 import { defineComponent } from "vue";
 import timepicker from "@/components/timepicker.vue";
-
+import faker from 'faker';
 import { useRouter } from "vue-router";
 
 // import {defineComponent} from 'vue'; and import defineComponent from 'vue'; the second one is not callable
@@ -76,6 +73,8 @@ export default defineComponent({
     IonContent,
     IonPage,
     Calendar,
+    IonSegmentButton,
+    IonSegment,
     // Calendar,
   },
   data() {
@@ -121,13 +120,43 @@ export default defineComponent({
     return { router };
   },
   methods: {
+    segmentChanged()
+    {
+this.attrs=[
+        {
+          highlight: "red",
+          dates: faker.date.soon(10)
+        },
+        {
+          highlight: "red",
+          dates: faker.date.soon(10)
+        },
+        {
+          highlight: "red",
+          dates: faker.date.soon(10)
+        },
+        {
+          highlight: "red",
+          dates: faker.date.soon(10)
+        },
+        {
+          highlight: "gray",
+          dates:faker.date.soon(10)
+        },
+        {
+          highlight: "gray",
+          dates: faker.date.soon(10),
+          disabled: true,
+        },
+      ]
+    },
     async openModal() {
       const modal = await modalController.create({
         component: timepicker,
         backdropDismiss: true,
         swipeToClose: true,
         //@ts-ignore
-        componentProps:{date:this.selectedDate.ariaLabel}
+        componentProps: { date: this.selectedDate.ariaLabel },
       });
       return modal.present();
     },
