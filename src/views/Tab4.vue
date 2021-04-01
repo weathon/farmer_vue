@@ -191,6 +191,6 @@ ion-segment-button {
   color: black;
 }
 .table {
-  text-align: center;
+  text-align: left;
 }
 </style>
