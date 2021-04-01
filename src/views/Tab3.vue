@@ -8,7 +8,7 @@
             <ion-icon :icon="archiveOutline" />
           </ion-menu-button>
         </ion-buttons>
-                <ion-buttons slot="start">
+        <ion-buttons slot="start">
           <ion-button @click="close()">
             <ion-icon :icon="chevronBackOutline" /> Back</ion-button
           >
@@ -30,49 +30,18 @@
         </ion-toolbar> -->
       <!-- </ion-header> -->
 
-      <myMessage
-        title="Request from Buyer A"
+      <!-- title="Request from Buyer A"
         content="Buyer A wants 80 tons of green beans before 1/20/2020, offering
                 a price of +0.35."
-        action="alert('You clicked N1')"
+        action="alert('You clicked N1')" -->
+      <myMessage
+        v-for="message in messages"
+        v-bind:key="message"
+        v-bind:title="message.title"
+        v-bind:content="message.content"
       ></myMessage>
 
-      <myMessage
-        title="Request from Buyer A"
-        content="Buyer A wants 80 tons of green beans before 1/20/2020, offering
-                a price of +0.35."
-        action="alert('You clicked N2')"
-      ></myMessage>
-
-      <myMessage
-        title="Request from Buyer A"
-        content="Buyer A wants 80 tons of green beans before 1/20/2020, offering
-                a price of +0.35."
-        action="alert('You clicked N2')"
-      ></myMessage>
-
-      <myMessage
-        title="Request from Buyer A"
-        content="Buyer A wants 80 tons of green beans before 1/20/2020, offering
-                a price of +0.35."
-        action="alert('You clicked N2')"
-      ></myMessage>
-
-      <div v-for="i in [1,2,3,4,5,6,7,8,9]" v-bind:key="i">
-              <myMessage
-        title="Request from Buyer A"
-        content="Buyer A wants 80 tons of green beans before 1/20/2020, offering
-                a price of +0.35."
-        action="alert('You clicked N2')"
-      ></myMessage>
-
-      <myMessage
-        title="Request from Buyer A"
-        content="Buyer A wants 80 tons of green beans before 1/20/2020, offering
-                a price of +0.35."
-        action="alert('You clicked N2')"
-      ></myMessage>
-      </div>
+      <!-- </div> -->
     </ion-content>
   </ion-page>
 </template>
@@ -89,7 +58,7 @@ import {
   IonIcon,
   IonMenuButton,
   IonButtons,
-  modalController
+  modalController,
 } from "@ionic/vue";
 import { archiveOutline } from "ionicons/icons";
 import myMessage from "@/components/Message.vue";
@@ -109,7 +78,30 @@ export default defineComponent({
     myMessage,
   },
   setup() {
-    return { archiveOutline,chevronBackOutline };
+    const messages = [
+      {
+        title: "Your contract with MFA is confrimed",
+        content:
+          "The contract of 500 bushels of rice is confrimed by the buyer. The deliverie month is June.",
+      },
+      {
+        title: "Request from Cargill",
+        content:
+          "Cargill is requesting 50,000 bushels of corn before April 5, 2021, offering a price of $4.90 per bushel.",
+      },
+
+      {
+        title: "Your contract with Cargill is confrimed",
+        content:
+          "The contract of 800 bushels of corn is confrimed by the buyer. The deliverie month is June.",
+      },
+      {
+        title: "Request from MFA",
+        content:
+          "Cargill is requesting 10,000 bushels of rice before April 6, 2021, offering a price of $4.90 per bushel.",
+      },
+    ];
+    return { archiveOutline, chevronBackOutline, messages };
   },
   methods: {
     close() {

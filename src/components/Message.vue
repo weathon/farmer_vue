@@ -1,20 +1,18 @@
 <template>
+  <ion-item-sliding>
+    <ion-item lines="full">
+      <ion-label>
+        <div style="margin: 10px 0px 5px 0px">
+          <b style="color: black">{{ title }}</b>
+        </div>
 
-    <ion-item-sliding> 
-      <ion-item lines="full">
-        <ion-label>
-            <b style="color:black">{{ title }}</b>
-            <br />
-            <div  class="ion-text-wrap">{{ content }}</div>
-            <br />
-        </ion-label>
-
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option onClick="archive(item)">Archive</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
+        <div class="ion-text-wrap">{{ content }}</div>
+      </ion-label>
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option onClick="archive(item)">Archive</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
 </template>
 
 <script lang="ts">
