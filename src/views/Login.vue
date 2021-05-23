@@ -29,7 +29,10 @@
         <br />
         <ion-row>
           <ion-col size="6">
-            <ion-button expand="block" style="background-color: " @click="openreg()"
+            <ion-button
+              expand="block"
+              style="background-color: "
+              @click="openreg()"
               >Register</ion-button
             >
           </ion-col>
@@ -43,8 +46,7 @@
 </template>
 
 <script lang="ts">
-import reg from "@/views/register.vue"
-
+import reg from "@/views/register.vue";
 
 import {
   IonCard,
@@ -60,7 +62,7 @@ import {
   alertController,
 } from "@ionic/vue";
 
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "myLogin",
@@ -94,22 +96,35 @@ export default defineComponent({
     },
     async openreg() {
       const modal = await modalController.create({
-        "component": reg,
+        component: reg,
         backdropDismiss: false,
       });
       return modal.present();
     },
     login() {
       // @ts-ignore
-      let success =
+      const username = document.getElementById("username").value;
       // @ts-ignore
-        document.getElementById("username").value == "test" &&
-      // @ts-ignore
-        document.getElementById("psw").value == "123456";
-      console.log(success);
-      success=true;
-      if (success) modalController.dismiss();
-      else this.presentAlert();
+      const psw = document.getElementById("psw").value;
+      const fd = new FormData();
+      fd.append("username", username);
+      fd.append("password", psw);
+
+      fetch("https://farmer.weathon.top/api/auth/jwt/login", {
+        method: "POST",
+        body: fd,
+      }).then((response) => {
+        if (response.ok) {
+          modalController.dismiss();
+        }
+        else
+        {
+          this.presentAlert();
+        }
+      });
+
+      // if (success) modalController.dismiss();
+      // else this.presentAlert();
     },
   },
 });

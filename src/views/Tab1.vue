@@ -374,6 +374,18 @@ export default defineComponent({
   },
   async created() {
     let alreadylogin = false;
+    fetch("https://farmer.weathon.top/api/users/me", {
+        method: "GET",
+      }).then((response) => {
+        if (response.ok) {
+          alreadylogin=true
+        }
+      });
+//jiancha?
+  //     // if (success) modalController.dismiss();
+  //     // else this.presentAlert();
+  //   },
+  // },
     if (alreadylogin == false) {
       const modal = await modalController.create({
         component: myLogin,
