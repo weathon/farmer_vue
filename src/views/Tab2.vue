@@ -60,7 +60,7 @@ import {
 import { Calendar } from "v-calendar";
 import { defineComponent } from "vue";
 import timepicker from "@/components/timepicker.vue";
-import faker from 'faker';
+import faker from "faker";
 import { useRouter } from "vue-router";
 
 // import {defineComponent} from 'vue'; and import defineComponent from 'vue'; the second one is not callable
@@ -120,35 +120,34 @@ export default defineComponent({
     return { router };
   },
   methods: {
-    segmentChanged()
-    {
-this.attrs=[
+    segmentChanged() {
+      this.attrs = [
         {
           highlight: "red",
-          dates: faker.date.soon(10)
+          dates: faker.date.soon(10),
         },
         {
           highlight: "red",
-          dates: faker.date.soon(10)
+          dates: faker.date.soon(10),
         },
         {
           highlight: "red",
-          dates: faker.date.soon(10)
+          dates: faker.date.soon(10),
         },
         {
           highlight: "red",
-          dates: faker.date.soon(10)
+          dates: faker.date.soon(10),
         },
         {
           highlight: "gray",
-          dates:faker.date.soon(10)
+          dates: faker.date.soon(10),
         },
         {
           highlight: "gray",
           dates: faker.date.soon(10),
           disabled: true,
         },
-      ]
+      ];
     },
     async openModal() {
       const modal = await modalController.create({
