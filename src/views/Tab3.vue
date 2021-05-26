@@ -44,7 +44,7 @@
 
       <div v-if="loading == false">
         <myMessage
-          v-for="message in messages"
+          v-for="message in mymessages"
           v-bind:key="message"
           v-bind:title="message.title"
           v-bind:content="message.content"
@@ -125,7 +125,8 @@ export default defineComponent({
   },
   async mounted() {
     // this.loading=false //zheligaikeyi shangmianbuxing
-    console.log(await this.fetchMessages());
+    this.mymessages= await this.fetchMessages();//zhiqianhuihuaxian
+    this.loading =false;
   },
 });
 </script>
