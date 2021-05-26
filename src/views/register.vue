@@ -148,7 +148,7 @@ export default defineComponent({
             message:
               "Registration success! Please wait for the verification email to be sent.",
             duration: 2000,
-            color: "dark",
+            color: "light",
             // translucent: true
           });
           toast.present() //wangjile weiosm cu await
