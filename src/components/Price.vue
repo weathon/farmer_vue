@@ -9,9 +9,11 @@
   </ion-col>
 
   <ion-col
+
+
     size="6"
     style="text-align: center; color: red; height: 64px"
-    v-if="Rprice < 0"
+    v-if="Rprice < 0 && close == false"
     v-on:click="sell(buyer, Month, Aprice + Rprice, close)"
   >
     <div style="font-size: small">
@@ -27,7 +29,8 @@
   <ion-col
     size="6"
     style="text-align: center; color: green; height: 64px"
-    v-if="Rprice > 0"
+        v-if="Rprice > 0 && close == false"
+
     v-on:click="sell(buyer, Month, Aprice + Rprice, close)"
   >
     <div style="font-size: small">
