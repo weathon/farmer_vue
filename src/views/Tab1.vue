@@ -52,234 +52,228 @@
         </ion-col>
 
         <ion-col size="8" style="height: 100%">
-          <ion-slides v-if="crop == 'Soybean'">
-            <ion-slide
-              style="height: 100%"
-              v-for="mymonth in [
-                ['May', 'Jun'],
-                ['Jul', 'Aug'],
-              ]"
-              v-bind:key="mymonth"
-            >
-              <ion-grid>
-                <ion-item>
-                  <ion-col size="6" style="text-align: center">
-                    <b>{{ mymonth[0] }}</b>
-                    <!-- <buyer v-bind:name=mymonth[0]></buyer> -->
-                  </ion-col>
-                  <ion-col size="6" style="text-align: center">
-                    <b>{{ mymonth[1] }}</b>
-                  </ion-col>
-                </ion-item>
-                <ion-item lines="full" style="width: 100%">
-                  <ion-row style="width: 100%">
-                    <Price
-                      :Aprice="4.85"
-                      :Rprice="0.5"
-                      :percentage="0.3"
-                      buyer="Cargill - California, MO"
-                      v-bind:Month="mymonth[0]"
-                    ></Price>
-                    <Price
-                      :Aprice="4.85"
-                      :Rprice="-0.3"
-                      :percentage="0.8"
-                      buyer="Cargill - California, MO"
-                      v-bind:Month="mymonth[1]"
-                    ></Price>
-                  </ion-row>
-                </ion-item>
+          <div v-if="crop == 'Soybean' && loading == false">
+            <ion-slides>
+              <!--  v-for="buyer in myjson" v-bind:key="buyer" -->
+              <ion-slide
+                style="height: 100%"
+                v-for="mymonth in [
+                  ['Jun', 'Jul'],
+                  ['Aug', 'Sep'], //修改
+                ]"
+                v-bind:key="mymonth"
+              >
+                <ion-grid>
+                  <ion-item>
+                    <ion-col size="6" style="text-align: center">
+                      <b>{{ mymonth[0] }}</b>
+                      <!-- <buyer v-bind:name=mymonth[0]></buyer> -->
+                    </ion-col>
+                    <ion-col size="6" style="text-align: center">
+                      <b>{{ mymonth[1] }}</b>
+                    </ion-col>
+                  </ion-item>
+                  <ion-item
+                    lines="full"
+                    style="width: 100%"
+                    v-bind:key="buyer"
+                    v-for="buyer in [
+                      'Cargill - California, MO',
+                      'Cargill - California, MO',
+                      'MFA - Columbia, MO',
+                    ]"
+                  >
+                    <!-- https://stackoverflow.com/questions/41424354/vue-js-cannot-access-to-nested-properties-of-data-object -->
+                    <!-- buyer.mymonth[0/1].buyer -->
+                    <div v-if="myjson[buyer]" style="width: 100%">
+                      <!-- 可以只弄一次 -->
+                      <ion-row style="width: 100%">
+                        <Price
+                          :Aprice="myjson[buyer][mymonth[0]].aprice / 100"
+                          :Rprice="myjson[buyer][mymonth[0]].rprice / 100"
+                          :percentage="
+                            myjson[buyer][mymonth[0]].percentage / 100
+                          "
+                          :buyer="myjson[buyer][mymonth[0]].buyer"
+                          v-bind:Month="mymonth[0]"
+                        ></Price>
+                          <Price
+                          :Aprice="myjson[buyer][mymonth[1]].aprice / 100"
+                          :Rprice="myjson[buyer][mymonth[1]].rprice / 100"
+                          :percentage="
+                            myjson[buyer][mymonth[1]].percentage / 100
+                          "
+                          :buyer="myjson[buyer][mymonth[1]].buyer"
+                          v-bind:Month="mymonth[1]"
+                        ></Price>
+                      </ion-row>
+                    </div>
+                  </ion-item>
 
-                <ion-item lines="full" style="width: 100%">
-                  <ion-row style="width: 100%">
-                    <Price
-                      :Aprice="4.85"
-                      :Rprice="1.0"
-                      :percentage="0.9"
-                      buyer="Cargill - Eldon, MO"
-                      v-bind:Month="mymonth[0]"
-                    ></Price>
-                    <Price
-                      :Aprice="4.85"
-                      :Rprice="+0.7"
-                      :percentage="0.6"
-                      buyer="Cargill - Eldon, MO"
-                      v-bind:Month="mymonth[1]"
-                    ></Price>
-                  </ion-row>
-                </ion-item>
+                  <ion-row>&nbsp;</ion-row>
+                  <ion-row>&nbsp;</ion-row>
+                </ion-grid>
+                <br />
+                <br />
+              </ion-slide>
+            </ion-slides>
+          </div>
+          <div v-if="crop == 'Corn'">
+            <ion-slides>
+              <ion-slide
+                style="height: 100%"
+                v-for="mymonth in [
+                  ['May', 'Jun'],
+                  ['Jul', 'Aug'],
+                ]"
+                v-bind:key="mymonth"
+              >
+                <ion-grid>
+                  <ion-item>
+                    <ion-col size="6" style="text-align: center">
+                      <b>{{ mymonth[0] }}</b>
+                      <!-- <buyer v-bind:name=mymonth[0]></buyer> -->
+                    </ion-col>
+                    <ion-col size="6" style="text-align: center">
+                      <b>{{ mymonth[1] }}</b>
+                    </ion-col>
+                  </ion-item>
+                  <ion-item lines="full" style="width: 100%">
+                    <ion-row style="width: 100%">
+                      <Price
+                        :Aprice="5.05"
+                        :Rprice="-0.5"
+                        :percentage="0.8"
+                        buyer="Cargill - California, MO"
+                        v-bind:Month="mymonth[0]"
+                      ></Price>
+                      <Price
+                        :Aprice="5.69"
+                        :Rprice="-0.2"
+                        :percentage="0.8"
+                        buyer="Cargill - California, MO"
+                        v-bind:Month="mymonth[1]"
+                      ></Price>
+                    </ion-row>
+                  </ion-item>
 
-                <ion-item lines="full" style="width: 100%">
-                  <ion-row style="width: 100%">
-                    <Price :close="true"></Price>
-                    <Price
-                      :Aprice="4.85"
-                      :Rprice="0.5"
-                      :percentage="0.3"
-                      buyer="MFA - Columbia, MO"
-                      v-bind:Month="mymonth[0]"
-                    ></Price>
-                  </ion-row>
-                </ion-item>
-                <ion-row>&nbsp;</ion-row>
-                <ion-row>&nbsp;</ion-row>
-              </ion-grid>
-              <br />
-              <br />
-            </ion-slide>
-          </ion-slides>
-          <ion-slides v-if="crop == 'Corn'">
-            <ion-slide
-              style="height: 100%"
-              v-for="mymonth in [
-                ['May', 'Jun'],
-                ['Jul', 'Aug'],
-              ]"
-              v-bind:key="mymonth"
-            >
-              <ion-grid>
-                <ion-item>
-                  <ion-col size="6" style="text-align: center">
-                    <b>{{ mymonth[0] }}</b>
-                    <!-- <buyer v-bind:name=mymonth[0]></buyer> -->
-                  </ion-col>
-                  <ion-col size="6" style="text-align: center">
-                    <b>{{ mymonth[1] }}</b>
-                  </ion-col>
-                </ion-item>
-                <ion-item lines="full" style="width: 100%">
-                  <ion-row style="width: 100%">
-                    <Price
-                      :Aprice="5.05"
-                      :Rprice="-0.5"
-                      :percentage="0.8"
-                      buyer="Cargill - California, MO"
-                      v-bind:Month="mymonth[0]"
-                    ></Price>
-                    <Price
-                      :Aprice="5.69"
-                      :Rprice="-0.2"
-                      :percentage="0.8"
-                      buyer="Cargill - California, MO"
-                      v-bind:Month="mymonth[1]"
-                    ></Price>
-                  </ion-row>
-                </ion-item>
+                  <ion-item lines="full" style="width: 100%">
+                    <ion-row style="width: 100%">
+                      <Price
+                        :Aprice="5.05"
+                        :Rprice="+1.0"
+                        :percentage="0.1"
+                        buyer="Cargill - Eldon, MO"
+                        v-bind:Month="mymonth[0]"
+                      ></Price>
+                      <Price
+                        :Aprice="5.69"
+                        :Rprice="+0.3"
+                        :percentage="0.5"
+                        buyer="Cargill - Eldon, MO"
+                        v-bind:Month="mymonth[1]"
+                      ></Price>
+                    </ion-row>
+                  </ion-item>
 
-                <ion-item lines="full" style="width: 100%">
-                  <ion-row style="width: 100%">
-                    <Price
-                      :Aprice="5.05"
-                      :Rprice="+1.0"
-                      :percentage="0.1"
-                      buyer="Cargill - Eldon, MO"
-                      v-bind:Month="mymonth[0]"
-                    ></Price>
-                    <Price
-                      :Aprice="5.69"
-                      :Rprice="+0.3"
-                      :percentage="0.5"
-                      buyer="Cargill - Eldon, MO"
-                      v-bind:Month="mymonth[1]"
-                    ></Price>
-                  </ion-row>
-                </ion-item>
+                  <ion-item lines="full" style="width: 100%">
+                    <ion-row style="width: 100%">
+                      <Price
+                        :Aprice="5.05"
+                        :Rprice="0.2"
+                        :percentage="0.8"
+                        buyer="MFA - Columbia, MO"
+                        v-bind:Month="mymonth[0]"
+                      ></Price>
+                      <Price :close="true"></Price>
+                    </ion-row>
+                  </ion-item>
+                  <ion-row>&nbsp;</ion-row>
+                  <ion-row>&nbsp;</ion-row>
+                </ion-grid>
+                <br />
+                <br />
+              </ion-slide>
+            </ion-slides>
+          </div>
+          <div v-if="crop == 'Rice'">
+            <ion-slides>
+              <ion-slide
+                style="height: 100%"
+                v-for="mymonth in [
+                  ['May', 'Jun'],
+                  ['Jul', 'Aug'],
+                ]"
+                v-bind:key="mymonth"
+              >
+                <ion-grid>
+                  <ion-item>
+                    <ion-col size="6" style="text-align: center">
+                      <b>{{ mymonth[0] }}</b>
+                      <!-- <buyer v-bind:name=mymonth[0]></buyer> -->
+                    </ion-col>
+                    <ion-col size="6" style="text-align: center">
+                      <b>{{ mymonth[1] }}</b>
+                    </ion-col>
+                  </ion-item>
+                  <ion-item lines="full" style="width: 100%">
+                    <ion-row style="width: 100%">
+                      <Price
+                        :Aprice="4.85"
+                        :Rprice="0.5"
+                        :percentage="0.8"
+                        buyer="Cargill - California, MO"
+                        v-bind:Month="mymonth[0]"
+                      ></Price>
+                      <Price
+                        :Aprice="4.85"
+                        :Rprice="-0.3"
+                        :percentage="0.8"
+                        buyer="Cargill - California, MO"
+                        v-bind:Month="mymonth[1]"
+                      ></Price>
+                    </ion-row>
+                  </ion-item>
 
-                <ion-item lines="full" style="width: 100%">
-                  <ion-row style="width: 100%">
-                    <Price
-                      :Aprice="5.05"
-                      :Rprice="0.2"
-                      :percentage="0.8"
-                      buyer="MFA - Columbia, MO"
-                      v-bind:Month="mymonth[0]"
-                    ></Price>
-                    <Price :close="true"></Price>
-                  </ion-row>
-                </ion-item>
-                <ion-row>&nbsp;</ion-row>
-                <ion-row>&nbsp;</ion-row>
-              </ion-grid>
-              <br />
-              <br />
-            </ion-slide>
-          </ion-slides>
-          <ion-slides v-if="crop == 'Rice'">
-            <ion-slide
-              style="height: 100%"
-              v-for="mymonth in [
-                ['May', 'Jun'],
-                ['Jul', 'Aug'],
-              ]"
-              v-bind:key="mymonth"
-            >
-              <ion-grid>
-                <ion-item>
-                  <ion-col size="6" style="text-align: center">
-                    <b>{{ mymonth[0] }}</b>
-                    <!-- <buyer v-bind:name=mymonth[0]></buyer> -->
-                  </ion-col>
-                  <ion-col size="6" style="text-align: center">
-                    <b>{{ mymonth[1] }}</b>
-                  </ion-col>
-                </ion-item>
-                <ion-item lines="full" style="width: 100%">
-                  <ion-row style="width: 100%">
-                    <Price
-                      :Aprice="4.85"
-                      :Rprice="0.5"
-                      :percentage="0.8"
-                      buyer="Cargill - California, MO"
-                      v-bind:Month="mymonth[0]"
-                    ></Price>
-                    <Price
-                      :Aprice="4.85"
-                      :Rprice="-0.3"
-                      :percentage="0.8"
-                      buyer="Cargill - California, MO"
-                      v-bind:Month="mymonth[1]"
-                    ></Price>
-                  </ion-row>
-                </ion-item>
+                  <ion-item lines="full" style="width: 100%">
+                    <ion-row style="width: 100%">
+                      <Price
+                        :Aprice="4.85"
+                        :Rprice="1.0"
+                        :percentage="0.2"
+                        buyer="Cargill - Eldon, MO"
+                        v-bind:Month="mymonth[0]"
+                      ></Price>
+                      <Price
+                        :Aprice="4.85"
+                        :Rprice="-0.6"
+                        :percentage="0.7"
+                        buyer="Cargill - Eldon, MO"
+                        v-bind:Month="mymonth[1]"
+                      ></Price>
+                    </ion-row>
+                  </ion-item>
 
-                <ion-item lines="full" style="width: 100%">
-                  <ion-row style="width: 100%">
-                    <Price
-                      :Aprice="4.85"
-                      :Rprice="1.0"
-                      :percentage="0.2"
-                      buyer="Cargill - Eldon, MO"
-                      v-bind:Month="mymonth[0]"
-                    ></Price>
-                    <Price
-                      :Aprice="4.85"
-                      :Rprice="-0.6"
-                      :percentage="0.7"
-                      buyer="Cargill - Eldon, MO"
-                      v-bind:Month="mymonth[1]"
-                    ></Price>
-                  </ion-row>
-                </ion-item>
-
-                <ion-item lines="full" style="width: 100%">
-                  <ion-row style="width: 100%">
-                    <Price :close="true"></Price>
-                    <Price
-                      :Aprice="4.85"
-                      :Rprice="0.4"
-                      :percentage="0.1"
-                      buyer="MFA - Columbia, MO"
-                      v-bind:Month="mymonth[0]"
-                    ></Price>
-                  </ion-row>
-                </ion-item>
-                <ion-row>&nbsp;</ion-row>
-                <ion-row>&nbsp;</ion-row>
-              </ion-grid>
-              <br />
-              <br />
-            </ion-slide>
-          </ion-slides>
+                  <ion-item lines="full" style="width: 100%">
+                    <ion-row style="width: 100%">
+                      <Price :close="true"></Price>
+                      <Price
+                        :Aprice="4.85"
+                        :Rprice="0.4"
+                        :percentage="0.1"
+                        buyer="MFA - Columbia, MO"
+                        v-bind:Month="mymonth[0]"
+                      ></Price>
+                    </ion-row>
+                  </ion-item>
+                  <ion-row>&nbsp;</ion-row>
+                  <ion-row>&nbsp;</ion-row>
+                </ion-grid>
+                <br />
+                <br />
+              </ion-slide>
+            </ion-slides>
+          </div>
         </ion-col>
       </ion-row>
     </ion-content>
@@ -334,31 +328,49 @@ export default defineComponent({
     IonLabel,
     IonMenuButton,
   },
-
+  async mounted() {
+    console.log("Mounted");
+    this.myjson = await this.fetchMessages(this.crop);
+    console.log(this.myjson["Cargill CAMO"]["Jun"]["aprice"] / 100);
+    let alreadylogin = false;
+    await fetch("https://farmer.weathon.top/api/users/me", {
+      method: "GET",
+    }).then((response) => {
+      if (response.ok) {
+        alreadylogin = true;
+      }
+    });
+    // jiancha?
+    //     // if (success) modalController.dismiss();
+    //     // else this.presentAlert();
+    //   },
+    // },
+    if (alreadylogin == false) {
+      const modal = await modalController.create({
+        component: myLogin,
+        backdropDismiss: false,
+      });
+      modal.present();
+    }
+    alreadylogin = true;
+    //@ts-ignore
+    // setTimeout(modalController.dismiss,15000);
+  },
   methods: {
     async fetchMessages(c) {
-      this.loading = false;
       console.log("Get data");
       // return []
-      const response = await fetch(
-        "http://127.0.0.1:8000/price?crop="+c,
-        {
-          method: "GET",
-        }
-      );
-      return response
+      const response = await fetch("http://127.0.0.1:8000/price?crop=" + c, {
+        method: "GET",
+      });
+      this.loading = false;
+      return response.json();
     },
     async segmentChanged1(ev) {
       console.log(ev.detail.value);
       this.crop = ev.detail.value;
-      const myjson = await this.fetchMessages(this.crop);
-      console.log(myjson)
-    },
-    async mounted()
-    {
-      console.log("Mounted")
-      const myjson = await this.fetchMessages(this.crop);
-      console.log(myjson)
+      this.myjson = await this.fetchMessages(this.crop);
+      console.log(this.myjson);
     },
     async openModal() {
       const modal = await modalController.create({
@@ -389,34 +401,12 @@ export default defineComponent({
       console.log(buttonId);
     },
   },
-  async created() {
-    let alreadylogin = false;
-    await fetch("https://farmer.weathon.top/api/users/me", {
-      method: "GET",
-    }).then((response) => {
-      if (response.ok) {
-        alreadylogin = true;
-      }
-    });
-    //jiancha?
-    //     // if (success) modalController.dismiss();
-    //     // else this.presentAlert();
-    //   },
-    // },
-    if (alreadylogin == false) {
-      const modal = await modalController.create({
-        component: myLogin,
-        backdropDismiss: false,
-      });
-      modal.present();
-    }
-    alreadylogin = true;
-    //@ts-ignore
-    // setTimeout(modalController.dismiss,15000);
-  },
+  // async created() {
+
+  // },
   data() {
     const crop = "Soybean";
-    return { notificationsOutline, crop, loading:true };
+    return { notificationsOutline, crop, loading: true, myjson: {} };
   },
 });
 

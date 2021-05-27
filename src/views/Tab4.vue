@@ -129,13 +129,16 @@ export default defineComponent({
     IonSegment,
     IonSegmentButton,
   },
+  async mounted() {
+    this.rows = await this.fetchMessages("Soybean");
+  },
   methods: {
     async fetchMessages(c) {
       this.loading = false;
       console.log("Get data");
       // return []
       const response = await fetch(
-        "http://127.0.0.1:8000/getRecords?crop="+c,
+        "http://127.0.0.1:8000/getRecords?crop=" + c,
         {
           method: "GET",
         }
@@ -144,12 +147,9 @@ export default defineComponent({
       return data;
     },
     async segmentChanged(ev) {
-        this.rows=await this.fetchMessages(ev.detail.value);
+      this.rows = await this.fetchMessages(ev.detail.value);
     },
-    async mounted()
-    {
-      this.rows=await this.fetchMessages("Soybean");
-    },
+
     switchGrain(id) {
       //@ts-ignore
 
@@ -169,7 +169,7 @@ export default defineComponent({
   },
   data() {
     return {
-      loading:true,
+      loading: true,
       statusText: ["Pending", "In Progress", "Done", "Error"],
       statusColor: ["gray", "orange", "green", "red"],
       rows: [],
