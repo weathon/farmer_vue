@@ -313,7 +313,7 @@ export default defineComponent({
   async mounted() {
     console.log("Mounted");
     this.myjson = await this.fetchMessages(this.crop);
-    console.log(this.myjson["Cargill CAMO"]["Jun"]["aprice"] / 100);
+    // console.log(this.myjson["Cargill CAMO"]["Jun"]["aprice"] / 100);
     let alreadylogin = false;
     await fetch("https://farmer.weathon.top/api/users/me", {
       method: "GET",
@@ -327,14 +327,15 @@ export default defineComponent({
     //     // else this.presentAlert();
     //   },
     // },
+    console.log(alreadylogin)
     if (alreadylogin == false) {
       const modal = await modalController.create({
         component: myLogin,
         backdropDismiss: false,
       });
+      alreadylogin = true;
       modal.present();
     }
-    alreadylogin = true;
     //@ts-ignore
     // setTimeout(modalController.dismiss,15000);
   },
@@ -342,9 +343,12 @@ export default defineComponent({
     async fetchMessages(c) {
       console.log("Get data");
       // return []
-      const response = await fetch("https://farmer.weathon.top/api/price?crop=" + c, {
-        method: "GET",
-      });
+      const response = await fetch(
+        "https://farmer.weathon.top/api/price?crop=" + c,
+        {
+          method: "GET",
+        }
+      );
       this.loading = false;
       return response.json();
     },
