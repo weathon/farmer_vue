@@ -94,8 +94,9 @@
                           "
                           :buyer="myjson[buyer][mymonth[0]].buyer"
                           v-bind:Month="mymonth[0]"
+                          :close="myjson[buyer][mymonth[0]].closed"
                         ></Price>
-                          <Price
+                        <Price
                           :Aprice="myjson[buyer][mymonth[1]].aprice / 100"
                           :Rprice="myjson[buyer][mymonth[1]].rprice / 100"
                           :percentage="
@@ -103,6 +104,7 @@
                           "
                           :buyer="myjson[buyer][mymonth[1]].buyer"
                           v-bind:Month="mymonth[1]"
+                          :close="myjson[buyer][mymonth[1]].closed"
                         ></Price>
                       </ion-row>
                     </div>
@@ -117,7 +119,7 @@
             </ion-slides>
           </div>
           <div v-if="crop == 'Corn'">
-                       <ion-slides>
+            <ion-slides>
               <!--  v-for="buyer in myjson" v-bind:key="buyer" -->
               <ion-slide
                 style="height: 100%"
@@ -158,8 +160,9 @@
                           "
                           :buyer="myjson[buyer][mymonth[0]].buyer"
                           v-bind:Month="mymonth[0]"
+                          :close="myjson[buyer][mymonth[0]].closed"
                         ></Price>
-                          <Price
+                        <Price
                           :Aprice="myjson[buyer][mymonth[1]].aprice / 100"
                           :Rprice="myjson[buyer][mymonth[1]].rprice / 100"
                           :percentage="
@@ -167,6 +170,7 @@
                           "
                           :buyer="myjson[buyer][mymonth[1]].buyer"
                           v-bind:Month="mymonth[1]"
+                          :close="myjson[buyer][mymonth[1]].closed"
                         ></Price>
                       </ion-row>
                     </div>
@@ -181,7 +185,7 @@
             </ion-slides>
           </div>
           <div v-if="crop == 'Rice'">
-                        <ion-slides>
+            <ion-slides>
               <!--  v-for="buyer in myjson" v-bind:key="buyer" -->
               <ion-slide
                 style="height: 100%"
@@ -222,8 +226,9 @@
                           "
                           :buyer="myjson[buyer][mymonth[0]].buyer"
                           v-bind:Month="mymonth[0]"
+                          :close="myjson[buyer][mymonth[0]].closed"
                         ></Price>
-                          <Price
+                        <Price
                           :Aprice="myjson[buyer][mymonth[1]].aprice / 100"
                           :Rprice="myjson[buyer][mymonth[1]].rprice / 100"
                           :percentage="
@@ -231,6 +236,7 @@
                           "
                           :buyer="myjson[buyer][mymonth[1]].buyer"
                           v-bind:Month="mymonth[1]"
+                          :close="myjson[buyer][mymonth[1]].closed"
                         ></Price>
                       </ion-row>
                     </div>

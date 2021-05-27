@@ -17,7 +17,7 @@
     <div style="font-size: small">
       {{ Aprice }} <slot v-if="Rprice > 0">+</slot> {{ Rprice }}
     </div>
-    <b>{{ Aprice + Rprice }}</b>
+    <b>{{ (Aprice + Rprice).toFixed(2) }}</b>
     <ion-progress-bar
       v-bind:value="percentage"
       style="margin: 5px"
@@ -33,7 +33,7 @@
     <div style="font-size: small">
       {{ Aprice }} <slot v-if="Rprice > 0">+</slot> {{ Rprice }}
     </div>
-    <b>{{ Aprice + Rprice }}</b>
+    <b>{{ (Aprice + Rprice).toFixed(2) }}</b>
     <ion-progress-bar
       v-bind:value="percentage"
       style="margin: 5px"
