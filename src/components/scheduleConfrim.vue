@@ -101,7 +101,7 @@ export default defineComponent({
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-        },
+        }, 
         body: JSON.stringify(mydata),
       });
       return response.ok;
