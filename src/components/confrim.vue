@@ -67,8 +67,6 @@
 </template>
 
 <script lang="ts">
-
-
 import {
   IonItem,
   IonContent,
@@ -76,7 +74,7 @@ import {
   toastController,
 } from "@ionic/vue";
 
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "confrim",
@@ -89,6 +87,7 @@ export default defineComponent({
     Month: String,
     Aprice: String,
     closed: String,
+    crop: String,
   },
   components: {
     IonItem,
@@ -100,6 +99,26 @@ export default defineComponent({
     };
   },
   methods: {
+    async fetchMessages() {
+      console.log("Get data");
+      // return []
+      const mydata = {
+        crop: this.crop,
+        deliverieMonth: this.Month,
+        buyer: this.buyer,
+        contractAmount: 0,
+        deliveriedAmount: 0,
+        unitPrice: 0,
+      };
+      const response = await fetch("http://127.0.0.1:8000/creatRecord", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(mydata),
+      });
+      return response.ok;
+    },
     async openToast() {
       const toast = await toastController.create({
         message: "Successfully confirmed.",
@@ -109,9 +128,15 @@ export default defineComponent({
       });
       return toast.present();
     },
-    c() {
-      modalController.dismiss();
-      this.openToast();
+    async c() {
+      const ok = await this.fetchMessages(); //zhelijiumeiwenti huang gegechulai
+      if (ok) {
+        //kuohaowenti
+        modalController.dismiss();
+        this.openToast();
+      } else {
+        alert("Error!");
+      }
     },
   },
 });
@@ -126,7 +151,7 @@ export default defineComponent({
 ion-segment-button {
   --border-radius: 50px;
 }
-[round=true] {
+[round="true"] {
   border-radius: 50px;
   width: 60%;
   margin: 0 auto;

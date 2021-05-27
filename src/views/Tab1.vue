@@ -87,6 +87,7 @@
                     <div v-if="myjson[buyer]" style="width: 100%">
                       <ion-row style="width: 100%">
                         <Price
+                          :crop="myjson[buyer][mymonth[0]].crop"
                           :Aprice="myjson[buyer][mymonth[0]].aprice / 100"
                           :Rprice="myjson[buyer][mymonth[0]].rprice / 100"
                           :percentage="
@@ -97,6 +98,7 @@
                           :close="myjson[buyer][mymonth[0]].closed"
                         ></Price>
                         <Price
+                          :crop="myjson[buyer][mymonth[1]].crop"
                           :Aprice="myjson[buyer][mymonth[1]].aprice / 100"
                           :Rprice="myjson[buyer][mymonth[1]].rprice / 100"
                           :percentage="
@@ -153,6 +155,7 @@
                     <div v-if="myjson[buyer]" style="width: 100%">
                       <ion-row style="width: 100%">
                         <Price
+                          :crop="myjson[buyer][mymonth[0]].crop"
                           :Aprice="myjson[buyer][mymonth[0]].aprice / 100"
                           :Rprice="myjson[buyer][mymonth[0]].rprice / 100"
                           :percentage="
@@ -163,6 +166,7 @@
                           :close="myjson[buyer][mymonth[0]].closed"
                         ></Price>
                         <Price
+                          :crop="myjson[buyer][mymonth[1]].crop"
                           :Aprice="myjson[buyer][mymonth[1]].aprice / 100"
                           :Rprice="myjson[buyer][mymonth[1]].rprice / 100"
                           :percentage="
@@ -219,6 +223,7 @@
                     <div v-if="myjson[buyer]" style="width: 100%">
                       <ion-row style="width: 100%">
                         <Price
+                          :crop="myjson[buyer][mymonth[0]].crop"
                           :Aprice="myjson[buyer][mymonth[0]].aprice / 100"
                           :Rprice="myjson[buyer][mymonth[0]].rprice / 100"
                           :percentage="
@@ -229,6 +234,7 @@
                           :close="myjson[buyer][mymonth[0]].closed"
                         ></Price>
                         <Price
+                          :crop="myjson[buyer][mymonth[1]].crop"
                           :Aprice="myjson[buyer][mymonth[1]].aprice / 100"
                           :Rprice="myjson[buyer][mymonth[1]].rprice / 100"
                           :percentage="

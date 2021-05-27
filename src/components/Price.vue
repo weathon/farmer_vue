@@ -9,12 +9,10 @@
   </ion-col>
 
   <ion-col
-
-
     size="6"
     style="text-align: center; color: red; height: 64px"
     v-if="Rprice < 0 && close == false"
-    v-on:click="sell(buyer, Month, Aprice + Rprice, close)"
+    v-on:click="sell(buyer, Month, Aprice + Rprice, close, crop)"
   >
     <div style="font-size: small">
       {{ Aprice }} <slot v-if="Rprice > 0">+</slot> {{ Rprice }}
@@ -29,9 +27,8 @@
   <ion-col
     size="6"
     style="text-align: center; color: green; height: 64px"
-        v-if="Rprice > 0 && close == false"
-
-    v-on:click="sell(buyer, Month, Aprice + Rprice, close)"
+    v-if="Rprice > 0 && close == false"
+    v-on:click="sell(buyer, Month, Aprice + Rprice, close, crop)"
   >
     <div style="font-size: small">
       {{ Aprice }} <slot v-if="Rprice > 0">+</slot> {{ Rprice }}
@@ -45,7 +42,12 @@
 </template>
 
 <script lang="ts">
-import { IonCol, IonProgressBar, toastController, modalController } from "@ionic/vue";
+import {
+  IonCol,
+  IonProgressBar,
+  toastController,
+  modalController,
+} from "@ionic/vue";
 import confrim from "@/components/confrim.vue";
 
 export default {
@@ -57,22 +59,26 @@ export default {
     close: Boolean,
     buyer: String,
     Month: String,
+    crop: String,
   },
   components: {
     IonCol,
     IonProgressBar,
   },
   methods: {
-    async openModal(buyer, Month, Aprice, closed) {
-      const modal = await modalController
-        .create({
-	//@ts-ignore
-          component: confrim,
-          cssClass: 'popup',
-          componentProps: {
-            buyer, Month, Aprice, closed
-          },
-        })
+    async openModal(buyer, Month, Aprice, closed, crop) {
+      const modal = await modalController.create({
+        //@ts-ignore
+        component: confrim,
+        cssClass: "popup",
+        componentProps: {
+          buyer,
+          Month,
+          Aprice,
+          closed,
+          crop,
+        },
+      });
       return modal.present();
     },
 
@@ -80,28 +86,27 @@ export default {
       const toast = await toastController.create({
         message: "This window is closed.",
         duration: 2000,
-        color: 'dark',
+        color: "dark",
         // translucent: true
       });
       return toast.present();
     },
-    sell(buyer, Month, Aprice, closed) {
+    sell(buyer, Month, Aprice, closed, crop) {
       if (closed) {
-        this.openToast()
+        this.openToast();
         return;
       }
-      console.log(Month)
-      this.openModal(buyer, Month, Aprice, closed);
+      console.log(Month);
+      this.openModal(buyer, Month, Aprice, closed, crop);
     },
   },
 };
 </script>
 
 <style>
-.popup
-{
-  --width:90%;
-  --height:80%;
+.popup {
+  --width: 90%;
+  --height: 80%;
   --border-radius: 10px;
 }
 </style>
