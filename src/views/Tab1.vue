@@ -84,9 +84,7 @@
                     ]"
                   >
                     <!-- https://stackoverflow.com/questions/41424354/vue-js-cannot-access-to-nested-properties-of-data-object -->
-                    <!-- buyer.mymonth[0/1].buyer -->
                     <div v-if="myjson[buyer]" style="width: 100%">
-                      <!-- 可以只弄一次 -->
                       <ion-row style="width: 100%">
                         <Price
                           :Aprice="myjson[buyer][mymonth[0]].aprice / 100"
@@ -119,12 +117,13 @@
             </ion-slides>
           </div>
           <div v-if="crop == 'Corn'">
-            <ion-slides>
+                       <ion-slides>
+              <!--  v-for="buyer in myjson" v-bind:key="buyer" -->
               <ion-slide
                 style="height: 100%"
                 v-for="mymonth in [
-                  ['May', 'Jun'],
-                  ['Jul', 'Aug'],
+                  ['Jun', 'Jul'],
+                  ['Aug', 'Sep'], //修改
                 ]"
                 v-bind:key="mymonth"
               >
@@ -138,56 +137,41 @@
                       <b>{{ mymonth[1] }}</b>
                     </ion-col>
                   </ion-item>
-                  <ion-item lines="full" style="width: 100%">
-                    <ion-row style="width: 100%">
-                      <Price
-                        :Aprice="5.05"
-                        :Rprice="-0.5"
-                        :percentage="0.8"
-                        buyer="Cargill - California, MO"
-                        v-bind:Month="mymonth[0]"
-                      ></Price>
-                      <Price
-                        :Aprice="5.69"
-                        :Rprice="-0.2"
-                        :percentage="0.8"
-                        buyer="Cargill - California, MO"
-                        v-bind:Month="mymonth[1]"
-                      ></Price>
-                    </ion-row>
+                  <ion-item
+                    lines="full"
+                    style="width: 100%"
+                    v-bind:key="buyer"
+                    v-for="buyer in [
+                      'Cargill - California, MO',
+                      'Cargill - California, MO',
+                      'MFA - Columbia, MO',
+                    ]"
+                  >
+                    <!-- https://stackoverflow.com/questions/41424354/vue-js-cannot-access-to-nested-properties-of-data-object -->
+                    <div v-if="myjson[buyer]" style="width: 100%">
+                      <ion-row style="width: 100%">
+                        <Price
+                          :Aprice="myjson[buyer][mymonth[0]].aprice / 100"
+                          :Rprice="myjson[buyer][mymonth[0]].rprice / 100"
+                          :percentage="
+                            myjson[buyer][mymonth[0]].percentage / 100
+                          "
+                          :buyer="myjson[buyer][mymonth[0]].buyer"
+                          v-bind:Month="mymonth[0]"
+                        ></Price>
+                          <Price
+                          :Aprice="myjson[buyer][mymonth[1]].aprice / 100"
+                          :Rprice="myjson[buyer][mymonth[1]].rprice / 100"
+                          :percentage="
+                            myjson[buyer][mymonth[1]].percentage / 100
+                          "
+                          :buyer="myjson[buyer][mymonth[1]].buyer"
+                          v-bind:Month="mymonth[1]"
+                        ></Price>
+                      </ion-row>
+                    </div>
                   </ion-item>
 
-                  <ion-item lines="full" style="width: 100%">
-                    <ion-row style="width: 100%">
-                      <Price
-                        :Aprice="5.05"
-                        :Rprice="+1.0"
-                        :percentage="0.1"
-                        buyer="Cargill - Eldon, MO"
-                        v-bind:Month="mymonth[0]"
-                      ></Price>
-                      <Price
-                        :Aprice="5.69"
-                        :Rprice="+0.3"
-                        :percentage="0.5"
-                        buyer="Cargill - Eldon, MO"
-                        v-bind:Month="mymonth[1]"
-                      ></Price>
-                    </ion-row>
-                  </ion-item>
-
-                  <ion-item lines="full" style="width: 100%">
-                    <ion-row style="width: 100%">
-                      <Price
-                        :Aprice="5.05"
-                        :Rprice="0.2"
-                        :percentage="0.8"
-                        buyer="MFA - Columbia, MO"
-                        v-bind:Month="mymonth[0]"
-                      ></Price>
-                      <Price :close="true"></Price>
-                    </ion-row>
-                  </ion-item>
                   <ion-row>&nbsp;</ion-row>
                   <ion-row>&nbsp;</ion-row>
                 </ion-grid>
@@ -197,12 +181,13 @@
             </ion-slides>
           </div>
           <div v-if="crop == 'Rice'">
-            <ion-slides>
+                        <ion-slides>
+              <!--  v-for="buyer in myjson" v-bind:key="buyer" -->
               <ion-slide
                 style="height: 100%"
                 v-for="mymonth in [
-                  ['May', 'Jun'],
-                  ['Jul', 'Aug'],
+                  ['Jun', 'Jul'],
+                  ['Aug', 'Sep'], //修改
                 ]"
                 v-bind:key="mymonth"
               >
@@ -216,56 +201,41 @@
                       <b>{{ mymonth[1] }}</b>
                     </ion-col>
                   </ion-item>
-                  <ion-item lines="full" style="width: 100%">
-                    <ion-row style="width: 100%">
-                      <Price
-                        :Aprice="4.85"
-                        :Rprice="0.5"
-                        :percentage="0.8"
-                        buyer="Cargill - California, MO"
-                        v-bind:Month="mymonth[0]"
-                      ></Price>
-                      <Price
-                        :Aprice="4.85"
-                        :Rprice="-0.3"
-                        :percentage="0.8"
-                        buyer="Cargill - California, MO"
-                        v-bind:Month="mymonth[1]"
-                      ></Price>
-                    </ion-row>
+                  <ion-item
+                    lines="full"
+                    style="width: 100%"
+                    v-bind:key="buyer"
+                    v-for="buyer in [
+                      'Cargill - California, MO',
+                      'Cargill - California, MO',
+                      'MFA - Columbia, MO',
+                    ]"
+                  >
+                    <!-- https://stackoverflow.com/questions/41424354/vue-js-cannot-access-to-nested-properties-of-data-object -->
+                    <div v-if="myjson[buyer]" style="width: 100%">
+                      <ion-row style="width: 100%">
+                        <Price
+                          :Aprice="myjson[buyer][mymonth[0]].aprice / 100"
+                          :Rprice="myjson[buyer][mymonth[0]].rprice / 100"
+                          :percentage="
+                            myjson[buyer][mymonth[0]].percentage / 100
+                          "
+                          :buyer="myjson[buyer][mymonth[0]].buyer"
+                          v-bind:Month="mymonth[0]"
+                        ></Price>
+                          <Price
+                          :Aprice="myjson[buyer][mymonth[1]].aprice / 100"
+                          :Rprice="myjson[buyer][mymonth[1]].rprice / 100"
+                          :percentage="
+                            myjson[buyer][mymonth[1]].percentage / 100
+                          "
+                          :buyer="myjson[buyer][mymonth[1]].buyer"
+                          v-bind:Month="mymonth[1]"
+                        ></Price>
+                      </ion-row>
+                    </div>
                   </ion-item>
 
-                  <ion-item lines="full" style="width: 100%">
-                    <ion-row style="width: 100%">
-                      <Price
-                        :Aprice="4.85"
-                        :Rprice="1.0"
-                        :percentage="0.2"
-                        buyer="Cargill - Eldon, MO"
-                        v-bind:Month="mymonth[0]"
-                      ></Price>
-                      <Price
-                        :Aprice="4.85"
-                        :Rprice="-0.6"
-                        :percentage="0.7"
-                        buyer="Cargill - Eldon, MO"
-                        v-bind:Month="mymonth[1]"
-                      ></Price>
-                    </ion-row>
-                  </ion-item>
-
-                  <ion-item lines="full" style="width: 100%">
-                    <ion-row style="width: 100%">
-                      <Price :close="true"></Price>
-                      <Price
-                        :Aprice="4.85"
-                        :Rprice="0.4"
-                        :percentage="0.1"
-                        buyer="MFA - Columbia, MO"
-                        v-bind:Month="mymonth[0]"
-                      ></Price>
-                    </ion-row>
-                  </ion-item>
                   <ion-row>&nbsp;</ion-row>
                   <ion-row>&nbsp;</ion-row>
                 </ion-grid>
