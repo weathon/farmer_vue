@@ -342,7 +342,7 @@ export default defineComponent({
     async fetchMessages(c) {
       console.log("Get data");
       // return []
-      const response = await fetch("http://127.0.0.1:8000/price?crop=" + c, {
+      const response = await fetch("https://farmer.weathon.top/api/price?crop=" + c, {
         method: "GET",
       });
       this.loading = false;

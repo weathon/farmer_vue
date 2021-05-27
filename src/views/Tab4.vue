@@ -138,7 +138,7 @@ export default defineComponent({
       console.log("Get data");
       // return []
       const response = await fetch(
-        "http://127.0.0.1:8000/getRecords?crop=" + c,
+        "https://farmer.weathon.top/api/getRecords?crop=" + c,
         {
           method: "GET",
         }

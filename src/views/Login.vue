@@ -110,7 +110,7 @@ export default defineComponent({
       fd.append("username", username);
       fd.append("password", psw);
 
-      fetch("http://127.0.0.1:8000/auth/jwt/login", {
+      fetch("https://farmer.weathon.top/api/auth/jwt/login", {
         method: "POST",
         body: fd,
       }).then((response) => {

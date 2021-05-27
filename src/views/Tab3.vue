@@ -100,7 +100,7 @@ export default defineComponent({
       console.log("Get data");
       // return []
       const response = await fetch(
-        "http://127.0.0.1:8000/getMessages?archived=false",
+        "https://farmer.weathon.top/api/getMessages?archived=false",
         {
           method: "GET",
         }

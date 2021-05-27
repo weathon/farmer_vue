@@ -88,19 +88,18 @@ export default defineComponent({
       selectedDate: new Date(),
       attrs: [
         {
-          highlight: "red",
           dates: new Date(2021, 3, 30),
         },
         {
-          highlight: "red",
+         
           dates: new Date(2021, 3, 20),
         },
         {
-          highlight: "red",
+         
           dates: new Date(2021, 3, 15),
         },
         {
-          highlight: "red",
+         
           dates: new Date(2021, 2, 25),
         },
         {
@@ -121,23 +120,7 @@ export default defineComponent({
   },
   methods: {
     segmentChanged() {
-      this.attrs = [
-        {
-          highlight: "red",
-          dates: faker.date.soon(10),
-        },
-        {
-          highlight: "red",
-          dates: faker.date.soon(10),
-        },
-        {
-          highlight: "red",
-          dates: faker.date.soon(10),
-        },
-        {
-          highlight: "red",
-          dates: faker.date.soon(10),
-        },
+      this.attrs =[
         {
           highlight: "gray",
           dates: faker.date.soon(10),

@@ -54,7 +54,7 @@
         <ion-label>Amount(bsh.)</ion-label>
         <!-- <ion-label style="color: darkgray" ></ion-label> -->
         <ion-input
-          id="username"
+          id="amount"
           slot="end"
           placeholder="Type Here"
           type="number"
@@ -106,11 +106,10 @@ export default defineComponent({
         crop: this.crop,
         deliverieMonth: this.Month,
         buyer: this.buyer,
-        contractAmount: 0,
-        deliveriedAmount: 0,
-        unitPrice: 0,
+        //@ts-ignore
+        contractAmount: Number(document.getElementById("amount").value),
       };
-      const response = await fetch("http://127.0.0.1:8000/creatRecord", {
+      const response = await fetch("https://farmer.weathon.top/api/creatRecord", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -135,7 +135,7 @@ export default defineComponent({
         // @ts-ignore
         farmname: document.getElementById("farmname").value,
       };
-      fetch("http://127.0.0.1:8000/auth/register", {
+      fetch("https://farmer.weathon.top/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -152,7 +152,7 @@ export default defineComponent({
             // translucent: true
           });
           toast.present() //wangjile weiosm cu await
-          fetch("http://127.0.0.1:8000/auth/request-verify-token", {
+          fetch("https://farmer.weathon.top/api/auth/request-verify-token", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
