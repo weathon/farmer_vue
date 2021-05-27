@@ -124,6 +124,7 @@ export default defineComponent({
     return { archiveOutline, chevronBackOutline, loading };
   },
   async mounted() {
+    console.log("mounted")
     // this.loading=false //zheligaikeyi shangmianbuxing
     this.mymessages= await this.fetchMessages();//zhiqianhuihuaxian
     this.loading =false;

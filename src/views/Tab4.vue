@@ -146,6 +146,10 @@ export default defineComponent({
     async segmentChanged(ev) {
         this.rows=await this.fetchMessages(ev.detail.value);
     },
+    async mounted()
+    {
+      this.rows=await this.fetchMessages("Soybean");
+    },
     switchGrain(id) {
       //@ts-ignore
 

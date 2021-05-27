@@ -58,7 +58,6 @@
               v-for="mymonth in [
                 ['May', 'Jun'],
                 ['Jul', 'Aug'],
-                ['Sep', 'Oct'],
               ]"
               v-bind:key="mymonth"
             >
@@ -135,7 +134,6 @@
               v-for="mymonth in [
                 ['May', 'Jun'],
                 ['Jul', 'Aug'],
-                ['Sep', 'Oct'],
               ]"
               v-bind:key="mymonth"
             >
@@ -197,7 +195,6 @@
                       v-bind:Month="mymonth[0]"
                     ></Price>
                     <Price :close="true"></Price>
-
                   </ion-row>
                 </ion-item>
                 <ion-row>&nbsp;</ion-row>
@@ -213,7 +210,6 @@
               v-for="mymonth in [
                 ['May', 'Jun'],
                 ['Jul', 'Aug'],
-                ['Sep', 'Oct'],
               ]"
               v-bind:key="mymonth"
             >
@@ -338,10 +334,31 @@ export default defineComponent({
     IonLabel,
     IonMenuButton,
   },
+
   methods: {
-    segmentChanged1(ev) {
+    async fetchMessages(c) {
+      this.loading = false;
+      console.log("Get data");
+      // return []
+      const response = await fetch(
+        "http://127.0.0.1:8000/price?crop="+c,
+        {
+          method: "GET",
+        }
+      );
+      return response
+    },
+    async segmentChanged1(ev) {
       console.log(ev.detail.value);
-      this.crop=ev.detail.value;
+      this.crop = ev.detail.value;
+      const myjson = await this.fetchMessages(this.crop);
+      console.log(myjson)
+    },
+    async mounted()
+    {
+      console.log("Mounted")
+      const myjson = await this.fetchMessages(this.crop);
+      console.log(myjson)
     },
     async openModal() {
       const modal = await modalController.create({
@@ -374,18 +391,18 @@ export default defineComponent({
   },
   async created() {
     let alreadylogin = false;
-    fetch("https://farmer.weathon.top/api/users/me", {
-        method: "GET",
-      }).then((response) => {
-        if (response.ok) {
-          alreadylogin=true
-        }
-      });
-//jiancha?
-  //     // if (success) modalController.dismiss();
-  //     // else this.presentAlert();
-  //   },
-  // },
+    await fetch("https://farmer.weathon.top/api/users/me", {
+      method: "GET",
+    }).then((response) => {
+      if (response.ok) {
+        alreadylogin = true;
+      }
+    });
+    //jiancha?
+    //     // if (success) modalController.dismiss();
+    //     // else this.presentAlert();
+    //   },
+    // },
     if (alreadylogin == false) {
       const modal = await modalController.create({
         component: myLogin,
@@ -399,7 +416,7 @@ export default defineComponent({
   },
   data() {
     const crop = "Soybean";
-    return { notificationsOutline, crop };
+    return { notificationsOutline, crop, loading:true };
   },
 });
 
