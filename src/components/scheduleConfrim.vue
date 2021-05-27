@@ -116,6 +116,7 @@ export default defineComponent({
       return toast.present();
     },
     c() {
+      this.fetchMessages()
       modalController.dismiss();
       this.openToast();
     },
